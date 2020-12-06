@@ -8,7 +8,13 @@ class Laser {
         let def = {
             background_color: '#FEC400',
             w: 80,
-            h: 6
+            h: 6,
+            x: 0,
+            y: 0,
+            vx: 1,
+            vy: 1,
+            speed: 6,
+            def: 0
         }
         Object.assign(def, args);
         Object.assign(this, def);
@@ -26,8 +32,8 @@ class Laser {
         ctx.restore();
     }
     update() {
-        this.x += this.vx;
-        this.y += this.vy;
+        this.x += this.vx * this.speed;
+        this.y += this.vy * this.speed;
     }
 }
 class Player {
@@ -63,6 +69,11 @@ class Player {
         ctx.stroke();
         ctx.closePath();
     }
+    move(move) {
+        let limit_move = gui.border_left + player.size_out + gui.lineWidth;
+        this.x = Math.min(Math.max(this.x + move.x, limit_move), ww - limit_move);
+        this.y = Math.min(Math.max(this.y + move.y, limit_move), wh - limit_move);
+    }
 }
 class Gui {
     constructor(args) {
@@ -91,6 +102,7 @@ let wh = 360 * pow;
 canvas.width = windows.innerWidth;
 canvas.height = windows.innerHeight;
 let deviation = (canvas.width - ww) / 2;
+let orgpos = { x: ww / 2, y: wh / 2 };
 ctx.translate(deviation, 0)
 let gui = new Gui();
 let player = new Player();
@@ -103,11 +115,28 @@ function init() {
 init();
 function update() {
     ++time;
-    if (time % 80 === 0) {
+    if (time % 50 === 0) {
+        let laser = new Laser({ w: rand(60, 80) })
+        if (rand(0, 1)) {
+            laser.x = [0, ww][rand(0, 1)];
+            laser.y = rand(0, wh);
+        }
+        else {
+            laser.x = rand(0, ww);
+            laser.y = [0, wh][rand(0, 1)]
+        }
+        laser.x = 0;
+        laser.y = wh / 2;
+        if (laser.x > player.x) laser.vx = -1;
+        laser.vy = (laser.y - player.y) / (laser.x - player.x) * laser.vx;
+        let a = laser.y - player.y;
+        let b = laser.x - player.x;
+        let c = Math.sqrt(a ** 2 + b ** 2);
+        laser.deg = Math.acos(Math.cos((b ** 2 + c ** 2 - a ** 2) / (2 * b * c))) * 180 / Math.PI;
+        Lasers.push(laser);
     }
     Lasers.forEach(e => e.update());
 }
-
 function draw() {
     gui.draw();
     player.draw();
@@ -115,9 +144,8 @@ function draw() {
     requestAnimationFrame(draw);
 }
 canvas.addEventListener('mousemove', e => {
-    let limit_move = gui.border_left + player.size_out + gui.lineWidth
-    player.x = Math.min(Math.max(e.offsetX - deviation, limit_move), ww - limit_move);
-    player.y = Math.min(Math.max(e.offsetY, limit_move), wh - limit_move);
+    player.move({ x: e.offsetX - orgpos.x - deviation, y: e.offsetY - orgpos.y });
+    orgpos = { x: e.offsetX - deviation, y: e.offsetY };
 })
 requestAnimationFrame(draw);
 setInterval(update, 1000 / 60);
