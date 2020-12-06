@@ -32,12 +32,12 @@ class Laser {
     }
     new() {
         if (rand(0, 1)) {
-            this.x = [0 - this.w, ww][rand(0, 1)];
-            this.y = rand(0 - this.w, wh);
+            this.x = [0 - this.w * 2, ww + this.w][rand(0, 1)];
+            this.y = rand(0 - this.w, wh + this.w);
         }
         else {
-            this.x = rand(0, ww);
-            this.y = [0, wh][rand(0, 1)]
+            this.x = rand(0 - this.w, ww + this.w);
+            this.y = [0 - this.w * 2, wh + this.w][rand(0, 1)]
         }
         if (this.x > player.x) this.vx = -1;
         this.vx = (player.x - this.x) / 350;
@@ -78,6 +78,9 @@ class Player {
         ctx.arc(this.x, this.y, this.size_in, 0, Math.PI * 2);
         ctx.stroke();
         ctx.closePath();
+    }
+    update() {
+        this.size_in = (this.size_in + 0.5) % this.size_out;
     }
     move(move) {
         let limit_move = gui.border_left + player.size_out + gui.lineWidth;
@@ -127,6 +130,7 @@ function update() {
     ++time;
     if (time % 50 === 0) Lasers.push(new Laser().new());
     Lasers.forEach(e => e.update());
+    player.update();
 }
 function draw() {
     gui.draw();
