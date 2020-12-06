@@ -7,14 +7,9 @@ class Laser {
     constructor(args) {
         let def = {
             background_color: '#FEC400',
-            w: 80,
+            w: 80 * pow,
             h: 6,
-            x: 0,
-            y: 0,
-            vx: 1,
-            vy: 1,
-            speed: 6,
-            def: 0
+            speed: 4
         }
         Object.assign(def, args);
         Object.assign(this, def);
@@ -34,6 +29,21 @@ class Laser {
     update() {
         this.x += this.vx * this.speed;
         this.y += this.vy * this.speed;
+    }
+    new() {
+        if (rand(0, 1)) {
+            this.x = [0 - this.w, ww][rand(0, 1)];
+            this.y = rand(0 - this.w, wh);
+        }
+        else {
+            this.x = rand(0, ww);
+            this.y = [0, wh][rand(0, 1)]
+        }
+        if (this.x > player.x) this.vx = -1;
+        this.vx = (player.x - this.x) / 350;
+        this.vy = (this.y - player.y) / (this.x - player.x) * this.vx;
+        this.deg = Math.atan((this.y - player.y) / (this.x - player.x)) * 180 / Math.PI;
+        return this;
     }
 }
 class Player {
@@ -115,21 +125,7 @@ function init() {
 init();
 function update() {
     ++time;
-    if (time % 50 === 0) {
-        let laser = new Laser({ w: rand(60, 80) })
-        if (rand(0, 1)) {
-            laser.x = [0, ww][rand(0, 1)];
-            laser.y = rand(0, wh);
-        }
-        else {
-            laser.x = rand(0, ww);
-            laser.y = [0, wh][rand(0, 1)]
-        }
-        if (laser.x > player.x) laser.vx = -1;
-        laser.vy = (laser.y - player.y) / (laser.x - player.x) * laser.vx;
-        laser.deg = Math.atan((laser.y - player.y) / (laser.x - player.x)) * 180 / Math.PI;
-        Lasers.push(laser);
-    }
+    if (time % 50 === 0) Lasers.push(new Laser().new());
     Lasers.forEach(e => e.update());
 }
 function draw() {
