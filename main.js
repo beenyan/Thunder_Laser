@@ -6,19 +6,19 @@ const ctx = canvas.getContext('2d'); // 宣告2D畫布
 class Player {
     constructor(args) {
         let def = {
-            size_out: Math.floor(canvas.height / 25),
-            size_in: Math.floor(canvas.height / 50),
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            background_color: '#D4F685',
-            border_color: '#ABEC1C',
-            lineWidth: canvas.height / 200
+            size_out: 21 * pow,
+            size_in: 13 * pow,
+            x: ww / 2,
+            y: wh / 2,
+            background_color: '#FDE17C',
+            border_color: '#FEC400',
+            lineWidth: 2 * pow
         }
         Object.assign(def, args);
         Object.assign(this, def);
     }
     draw() {
-        ctx.fillStyle = 'this.background_color';
+        ctx.fillStyle = this.background_color;
         ctx.lineWidth = this.lineWidth;
         ctx.strokeStyle = this.border_color;
         ctx.beginPath();
@@ -41,31 +41,30 @@ class Player {
 class Gui {
     constructor(args) {
         let def = {
-            background_color: '#D7F692',
+            background_color: '#FDE17C',
             border_color: '#FEC508',
-            lineWidth: canvas.height * 0.01,
-            border_left: Math.floor(canvas.height * 0.1)
+            lineWidth: 5,
+            border_left: 30 * pow
         }
         Object.assign(def, args);
         Object.assign(this, def);
     }
     draw() {
         ctx.fillStyle = this.background_color;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, ww, wh);
         ctx.lineWidth = this.lineWidth
         ctx.strokeStyle = this.border_color;
-        ctx.strokeRect(this.border_left, this.border_left, canvas.width - this.border_left * 2, canvas.height - this.border_left * 2)
-    }
-    update() {
-        this.lineWidth = canvas.height * 0.01;
-        this.border_left = Math.floor(canvas.height * 0.1);
+        ctx.strokeRect(this.border_left, this.border_left, ww - this.border_left * 2, wh - this.border_left * 2)
     }
 }
 let windows = window;
-let ww = windows.innerHeight;
-let wh = windows.innerHeight;
-canvas.width = ww;
-canvas.height = wh;
+let pow = windows.innerHeight / 360
+let ww = 480 * pow;
+let wh = 360 * pow;
+canvas.width = windows.innerWidth;
+canvas.height = windows.innerHeight;
+let deviation = (canvas.width - ww) / 2;
+ctx.translate(deviation, 0)
 let gui = new Gui();
 let player = new Player();
 function init() {
@@ -83,7 +82,7 @@ function draw() {
 }
 canvas.addEventListener('mousemove', e => {
     let limit_move = gui.border_left + player.size_out + gui.lineWidth
-    player.x = Math.min(Math.max(e.offsetX, limit_move), canvas.width - limit_move);
-    player.y = Math.min(Math.max(e.offsetY, limit_move), canvas.height - limit_move);
+    player.x = Math.min(Math.max(e.offsetX - deviation, limit_move), ww - limit_move);
+    player.y = Math.min(Math.max(e.offsetY, limit_move), wh - limit_move);
 })
 requestAnimationFrame(draw);
