@@ -12,7 +12,7 @@ class Player {
             y: canvas.height / 2,
             background_color: '#D4F685',
             border_color: '#ABEC1C',
-            lineWidth: 4
+            lineWidth: canvas.height / 200
         }
         Object.assign(def, args);
         Object.assign(this, def);
@@ -82,7 +82,8 @@ function draw() {
     requestAnimationFrame(draw);
 }
 canvas.addEventListener('mousemove', e => {
-    player.x = e.offsetX;
-    player.y = e.offsetY
+    let temp = gui.border_left + player.size_out + gui.lineWidth
+    player.x = Math.min(Math.max(e.offsetX, temp), canvas.width - temp);
+    player.y = Math.min(Math.max(e.offsetY, temp), canvas.height - temp);
 })
 requestAnimationFrame(draw);
