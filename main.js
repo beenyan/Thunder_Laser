@@ -62,7 +62,7 @@ class Gui {
     }
 }
 let windows = window;
-let ww = windows.innerWidth;
+let ww = windows.innerHeight;
 let wh = windows.innerHeight;
 canvas.width = ww;
 canvas.height = wh;
@@ -82,8 +82,8 @@ function draw() {
     requestAnimationFrame(draw);
 }
 canvas.addEventListener('mousemove', e => {
-    let temp = gui.border_left + player.size_out + gui.lineWidth
-    player.x = Math.min(Math.max(e.offsetX, temp), canvas.width - temp);
-    player.y = Math.min(Math.max(e.offsetY, temp), canvas.height - temp);
+    let limit_move = gui.border_left + player.size_out + gui.lineWidth
+    player.x = Math.min(Math.max(e.offsetX, limit_move), canvas.width - limit_move);
+    player.y = Math.min(Math.max(e.offsetY, limit_move), canvas.height - limit_move);
 })
 requestAnimationFrame(draw);
