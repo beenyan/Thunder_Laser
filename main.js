@@ -32,11 +32,12 @@ class Laser {
         this.y += this.vy * this.speed;
     }
     new() {
-        this.x = rand(-ww, ww); // 焦點x
+        this.x = rand(-this.r, this.r); // 焦點x
         this.y = Math.sqrt(this.r ** 2 - this.x ** 2) * [1, -1][rand(0, 1)]; // 焦點y
-        this.vx = Math.sin(Math.tan((this.y - player.y) / (this.x - player.x)));
-        this.vy = Math.cos(Math.tan((this.y - player.y) / (this.x - player.x)));
         this.deg = Math.atan((this.y - player.y) / (this.x - player.x)) * 180 / Math.PI;
+        this.vx = Math.sin((this.y - player.y) / (this.x - player.x));
+        this.vy = Math.cos((this.y - player.y) / (this.x - player.x));
+
         // if (rand(0, 1)) {
         //     this.x = [0 - this.w * 2, ww + this.w][rand(0, 1)];
         //     this.y = rand(0 - this.w, wh + this.w);
@@ -45,9 +46,7 @@ class Laser {
         //     this.x = rand(0 - this.w, ww + this.w);
         //     this.y = [0 - this.w * 2, wh + this.w][rand(0, 1)];
         // }
-        // if (this.x > player.x) this.vx = -1;
-        // this.vx = (player.x - this.x) / 350;
-        // this.vy = (this.y - player.y) / (this.x - player.x) * this.vx;
+        if (this.x > player.x) this.vx = -1;
         // this.deg = Math.atan((this.y - player.y) / (this.x - player.x)) * 180 / Math.PI;
         return this;
     }
@@ -134,7 +133,7 @@ function init() {
 init();
 function update() {
     ++time;
-    if (time % 5 === 0) Lasers.push(new Laser().new());
+    if (time % 1 === 0) Lasers.push(new Laser().new());
     Lasers.forEach(e => e.update());
     player.update();
 }
