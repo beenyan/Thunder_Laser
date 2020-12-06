@@ -9,7 +9,8 @@ class Laser {
             background_color: '#FEC400',
             w: 80 * pow,
             h: 6,
-            speed: 4
+            speed: 4,
+            r: 400//Math.max(ww, wh) + 80 * pow
         }
         Object.assign(def, args);
         Object.assign(this, def);
@@ -18,7 +19,7 @@ class Laser {
         ctx.save();
         ctx.beginPath();
 
-        ctx.translate(this.x, this.y);
+        ctx.translate(this.x + ww / 2, this.y + wh / 2);
         ctx.rotate(Math.PI / 180 * this.deg);
         ctx.fillStyle = this.background_color;
         ctx.fillRect(0, 0, this.w, this.h);
@@ -31,18 +32,23 @@ class Laser {
         this.y += this.vy * this.speed;
     }
     new() {
-        if (rand(0, 1)) {
-            this.x = [0 - this.w * 2, ww + this.w][rand(0, 1)];
-            this.y = rand(0 - this.w, wh + this.w);
-        }
-        else {
-            this.x = rand(0 - this.w, ww + this.w);
-            this.y = [0 - this.w * 2, wh + this.w][rand(0, 1)]
-        }
-        if (this.x > player.x) this.vx = -1;
-        this.vx = (player.x - this.x) / 350;
-        this.vy = (this.y - player.y) / (this.x - player.x) * this.vx;
+        this.x = rand(-ww, ww); // 焦點x
+        this.y = Math.sqrt(this.r ** 2 - this.x ** 2) * [1, -1][rand(0, 1)]; // 焦點y
+        this.vx = Math.sin(Math.tan((this.y - player.y) / (this.x - player.x)));
+        this.vy = Math.cos(Math.tan((this.y - player.y) / (this.x - player.x)));
         this.deg = Math.atan((this.y - player.y) / (this.x - player.x)) * 180 / Math.PI;
+        // if (rand(0, 1)) {
+        //     this.x = [0 - this.w * 2, ww + this.w][rand(0, 1)];
+        //     this.y = rand(0 - this.w, wh + this.w);
+        // }
+        // else {
+        //     this.x = rand(0 - this.w, ww + this.w);
+        //     this.y = [0 - this.w * 2, wh + this.w][rand(0, 1)];
+        // }
+        // if (this.x > player.x) this.vx = -1;
+        // this.vx = (player.x - this.x) / 350;
+        // this.vy = (this.y - player.y) / (this.x - player.x) * this.vx;
+        // this.deg = Math.atan((this.y - player.y) / (this.x - player.x)) * 180 / Math.PI;
         return this;
     }
 }
@@ -102,7 +108,7 @@ class Gui {
     draw() {
         ctx.fillStyle = this.background_color;
         ctx.fillRect(0, 0, ww, wh);
-        ctx.lineWidth = this.lineWidth
+        ctx.lineWidth = this.lineWidth;
         ctx.strokeStyle = this.border_color;
         ctx.strokeRect(this.border_left, this.border_left, ww - this.border_left * 2, wh - this.border_left * 2)
     }
@@ -128,7 +134,7 @@ function init() {
 init();
 function update() {
     ++time;
-    if (time % 50 === 0) Lasers.push(new Laser().new());
+    if (time % 5 === 0) Lasers.push(new Laser().new());
     Lasers.forEach(e => e.update());
     player.update();
 }
