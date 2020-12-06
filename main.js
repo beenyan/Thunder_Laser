@@ -125,14 +125,9 @@ function update() {
             laser.x = rand(0, ww);
             laser.y = [0, wh][rand(0, 1)]
         }
-        laser.x = 0;
-        laser.y = wh / 2;
         if (laser.x > player.x) laser.vx = -1;
         laser.vy = (laser.y - player.y) / (laser.x - player.x) * laser.vx;
-        let a = laser.y - player.y;
-        let b = laser.x - player.x;
-        let c = Math.sqrt(a ** 2 + b ** 2);
-        laser.deg = Math.acos(Math.cos((b ** 2 + c ** 2 - a ** 2) / (2 * b * c))) * 180 / Math.PI;
+        laser.deg = Math.atan((laser.y - player.y) / (laser.x - player.x)) * 180 / Math.PI;
         Lasers.push(laser);
     }
     Lasers.forEach(e => e.update());
