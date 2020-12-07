@@ -9,17 +9,22 @@ class Laser {
             background_color: '#FEC400',
             w: 80 * pow,
             h: 6,
-            speed: 4,
-            r: 400//Math.max(ww, wh) + 80 * pow
+            speed: 8,
+            r: Math.max(ww, wh)
         }
         Object.assign(def, args);
         Object.assign(this, def);
+        this.x = rand(-this.r, this.r) + ww / 2; // 焦點x
+        this.y = Math.sqrt(this.r ** 2 - (this.x - ww / 2) ** 2) * [1, -1][rand(0, 1)] + wh / 2; // 焦點y
+        this.deg = Math.atan2(player.y - this.y, player.x - this.x) * 180 / Math.PI
+        this.vx = Math.cos(Math.PI / 180 * this.deg)
+        this.vy = Math.sin(Math.PI / 180 * this.deg)
     }
     draw() {
         ctx.save();
         ctx.beginPath();
 
-        ctx.translate(this.x + ww / 2, this.y + wh / 2);
+        ctx.translate(this.x, this.y);
         ctx.rotate(Math.PI / 180 * this.deg);
         ctx.fillStyle = this.background_color;
         ctx.fillRect(0, 0, this.w, this.h);
@@ -30,25 +35,6 @@ class Laser {
     update() {
         this.x += this.vx * this.speed;
         this.y += this.vy * this.speed;
-    }
-    new() {
-        this.x = rand(-this.r, this.r); // 焦點x
-        this.y = Math.sqrt(this.r ** 2 - this.x ** 2) * [1, -1][rand(0, 1)]; // 焦點y
-        this.deg = Math.atan((this.y - player.y) / (this.x - player.x)) * 180 / Math.PI;
-        this.vx = Math.sin((this.y - player.y) / (this.x - player.x));
-        this.vy = Math.cos((this.y - player.y) / (this.x - player.x));
-
-        // if (rand(0, 1)) {
-        //     this.x = [0 - this.w * 2, ww + this.w][rand(0, 1)];
-        //     this.y = rand(0 - this.w, wh + this.w);
-        // }
-        // else {
-        //     this.x = rand(0 - this.w, ww + this.w);
-        //     this.y = [0 - this.w * 2, wh + this.w][rand(0, 1)];
-        // }
-        if (this.x > player.x) this.vx = -1;
-        // this.deg = Math.atan((this.y - player.y) / (this.x - player.x)) * 180 / Math.PI;
-        return this;
     }
 }
 class Player {
@@ -126,6 +112,7 @@ let gui = new Gui();
 let player = new Player();
 let Lasers = [];
 let time = 0;
+
 function init() {
     gui.draw();
     ctx.globalCompositeOperation = 'source-atop';
@@ -133,7 +120,8 @@ function init() {
 init();
 function update() {
     ++time;
-    if (time % 1 === 0) Lasers.push(new Laser().new());
+    if (time % 50 === 0) Lasers.push(new Laser());
+    while (Lasers.length >= 20) Lasers.splice(0, 1)
     Lasers.forEach(e => e.update());
     player.update();
 }
