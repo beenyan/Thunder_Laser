@@ -4,7 +4,7 @@ const canvas = document.getElementById('canvas'); // 取得畫布
 const ctx = canvas.getContext('2d'); // 宣告2D畫布
 
 class Laser {
-    constructor(args) {
+    constructor() {
         let def = {
             background_color: '#FEC400',
             w: 80 * pow,
@@ -12,10 +12,19 @@ class Laser {
             speed: 8,
             r: Math.max(ww, wh)
         }
-        Object.assign(def, args);
         Object.assign(this, def);
-        this.x = rand(-this.r, this.r) + ww / 2; // 焦點x
-        this.y = Math.sqrt(this.r ** 2 - (this.x - ww / 2) ** 2) * [1, -1][rand(0, 1)] + wh / 2; // 焦點y
+        // 圓形生成法
+        // this.x = rand(-this.r, this.r) + ww / 2;
+        // this.y = Math.sqrt(this.r ** 2 - (this.x - ww / 2) ** 2) * [1, -1][rand(0, 1)] + wh / 2;
+
+        // 矩形生成法
+        Object.assign(this, [{
+            x: [-this.w, ww + this.w][rand(0, 1)],
+            y: rand(-this.w, wh + this.w)
+        }, {
+            x: rand(-this.w, ww + this.w),
+            y: [-this.w, wh + this.w][rand(0, 1)]
+        }][rand(0, 1)]);
         this.deg = Math.atan2(player.y - this.y, player.x - this.x) * 180 / Math.PI
         this.vx = Math.cos(Math.PI / 180 * this.deg)
         this.vy = Math.sin(Math.PI / 180 * this.deg)
@@ -120,7 +129,9 @@ function init() {
 init();
 function update() {
     ++time;
-    if (time % 50 === 0) Lasers.push(new Laser());
+    if (time % 50 === 0) {
+        Lasers.push(new Laser());
+    }
     while (Lasers.length >= 20) Lasers.splice(0, 1)
     Lasers.forEach(e => e.update());
     player.update();
