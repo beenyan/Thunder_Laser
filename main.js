@@ -7,8 +7,8 @@ class Laser {
     constructor() {
         let def = {
             background_color: '#FEC400',
-            w: 80 * pow,
-            h: 6,
+            w: 77 * scale,
+            h: 3 * scale,
             speed: 8,
             r: Math.max(ww, wh)
         }
@@ -49,13 +49,13 @@ class Laser {
 class Player {
     constructor(args) {
         let def = {
-            size_out: 21 * pow,
-            size_in: 13 * pow,
+            size_out: 21 * scale,
+            size_in: 13 * scale,
             x: ww / 2,
             y: wh / 2,
             background_color: '#FDE17C',
             border_color: '#FEC400',
-            lineWidth: 2 * pow
+            lineWidth: 2 * scale
         }
         Object.assign(def, args);
         Object.assign(this, def);
@@ -94,7 +94,7 @@ class Gui {
             background_color: '#FDE17C',
             border_color: '#FEC508',
             lineWidth: 5,
-            border_left: 30 * pow
+            border_left: 30 * scale
         }
         Object.assign(def, args);
         Object.assign(this, def);
@@ -109,9 +109,9 @@ class Gui {
 }
 
 let windows = window;
-let pow = windows.innerHeight / 360;
-let ww = 480 * pow;
-let wh = 360 * pow;
+let scale = windows.innerHeight / 360;
+let ww = 480 * scale;
+let wh = 360 * scale;
 canvas.width = windows.innerWidth;
 canvas.height = windows.innerHeight;
 let deviation = (canvas.width - ww) / 2;
