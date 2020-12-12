@@ -2,6 +2,8 @@
 /** @type {HTMLCanvasElement} */ // 宣告作業環境
 const canvas = document.getElementById('canvas'); // 取得畫布
 const ctx = canvas.getContext('2d'); // 宣告2D畫布
+const canvas_touch = document.createElement('canvas'); // 取得畫布
+const ctx_touch = canvas_touch.getContext('2d'); // 宣告2D畫布
 
 class Laser {
     constructor() {
@@ -10,7 +12,8 @@ class Laser {
             w: 77 * scale,
             h: 3 * scale,
             speed: 8,
-            r: Math.max(ww, wh)
+            r: Math.max(ww, wh),
+            transform: {}
         }
         Object.assign(this, def);
         // 圓形生成法
@@ -25,16 +28,18 @@ class Laser {
             x: rand(-this.w, ww + this.w),
             y: [-this.w, wh + this.w][rand(0, 1)]
         }][rand(0, 1)]);
-        this.deg = Math.atan2(player.y - this.y, player.x - this.x) * 180 / Math.PI
-        this.vx = Math.cos(Math.PI / 180 * this.deg)
-        this.vy = Math.sin(Math.PI / 180 * this.deg)
+        this.deg = Math.atan2(player.y - this.y, player.x - this.x);
+        this.vx = Math.cos(this.deg);
+        this.vy = Math.sin(this.deg);
+        this.transform.h = this.w * Math.sin(this.deg);
+        this.transform.w = Math.sqrt(this.w ** 2 - this.transform.h ** 2, 2) * (Math.abs(this.deg * 180 / Math.PI) >= 90 ? -1 : 1);
     }
     draw() {
         ctx.save();
         ctx.beginPath();
 
         ctx.translate(this.x, this.y);
-        ctx.rotate(Math.PI / 180 * this.deg);
+        ctx.rotate(this.deg);
         ctx.fillStyle = this.background_color;
         ctx.fillRect(0, 0, this.w, this.h);
 
@@ -73,7 +78,6 @@ class Player {
         ctx.arc(this.x, this.y, this.size_out, 0, Math.PI * 2);
         ctx.stroke();
         ctx.closePath();
-
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size_in, 0, Math.PI * 2);
         ctx.stroke();
@@ -86,6 +90,30 @@ class Player {
         let limit_move = gui.border_left + player.size_out + gui.lineWidth;
         this.x = Math.min(Math.max(this.x + move.x, limit_move), ww - limit_move);
         this.y = Math.min(Math.max(this.y + move.y, limit_move), wh - limit_move);
+    }
+    touch() {
+        canvas_touch.width = this.size_out * 2 + this.lineWidth;
+        canvas_touch.height = this.size_out * 2 + this.lineWidth;
+        ctx.beginPath();
+        ctx_touch.arc(this.size_out, this.size_out, this.size_out, 0, Math.PI * 2);
+        ctx_touch.stroke();
+        ctx.closePath();
+        let ans = ctx_touch.getImageData(0, 0, canvas_touch.width, canvas_touch.height).data.filter((e, i) => i % 4 === 3 && e !== 0).length;
+        if (Lasers.find(e => {
+            if (Math.sqrt(Math.pow(this.x - e.x - e.transform.w / 2, 2) + Math.pow(this.y - e.y - e.transform.h / 2, 2)) <= this.size_out + e.w / 2) {
+                ctx_touch.globalCompositeOperation = 'destination-out';
+                ctx_touch.translate(e.x - this.x + this.size_out, e.y - this.y + this.size_out);
+                ctx_touch.rotate(e.deg);
+                ctx_touch.fillRect(0, 0, e.w, e.h);
+                ctx_touch.restore();
+                // 碰撞
+                if (ans !== ctx_touch.getImageData(0, 0, canvas_touch.width, canvas_touch.height).data.filter((e, i) => i % 4 === 3 && e !== 0).length)
+                    return true;
+            }
+        }) !== undefined) {
+            alert('碰撞到');
+            init();
+        }
     }
 }
 class Gui {
@@ -125,14 +153,15 @@ let time = 0;
 function init() {
     gui.draw();
     ctx.globalCompositeOperation = 'source-atop';
+    Lasers = [];
+    player.x = ww / 2;
+    player.y = wh / 2;
+    orgpos = { x: ww / 2, y: wh / 2 };
 }
 init();
 function update() {
-    ++time;
-    if (time % 50 === 0) {
-        Lasers.push(new Laser());
-    }
-    while (Lasers.length >= 20) Lasers.splice(0, 1)
+    if (++time % 50 === 0) Lasers.push(new Laser());
+    while (Lasers.length >= 10) Lasers.splice(0, 1);
     Lasers.forEach(e => e.update());
     player.update();
 }
@@ -140,8 +169,10 @@ function draw() {
     gui.draw();
     player.draw();
     Lasers.forEach(e => e.draw());
+    player.touch();
     requestAnimationFrame(draw);
 }
+
 canvas.addEventListener('mousemove', e => {
     player.move({ x: e.offsetX - orgpos.x - deviation, y: e.offsetY - orgpos.y });
     orgpos = { x: e.offsetX - deviation, y: e.offsetY };
