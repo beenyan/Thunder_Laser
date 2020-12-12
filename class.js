@@ -1,5 +1,8 @@
 'use strict';
 /** @type {HTMLCanvasElement} */ // 宣告作業環境
+const canvas_touch = document.createElement('canvas');
+const ctx_touch = canvas_touch.getContext('2d');
+
 class Text {
     constructor(args) {
         let def = {

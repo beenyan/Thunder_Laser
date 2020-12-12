@@ -2,8 +2,6 @@
 /** @type {HTMLCanvasElement} */ // 宣告作業環境
 const canvas = document.getElementById('canvas'); // 取得畫布
 const ctx = canvas.getContext('2d'); // 宣告2D畫布
-const canvas_touch = document.createElement('canvas'); // 取得畫布
-const ctx_touch = canvas_touch.getContext('2d'); // 宣告2D畫布
 
 let scale = window.innerHeight / 360;
 let ww = 480 * scale;
