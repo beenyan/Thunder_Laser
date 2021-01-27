@@ -23,19 +23,6 @@ let windows = {
     Lobby: new Gui({ display: true }),
     Play: new Gui(),
 };
-// (() => {
-//     windows.Lobby.item.Texts = [
-//         new Text({
-//             text: 'Start',
-//             click: () => {
-//                 windows.Lobby.display = false;
-//                 windows.Play.display = true;
-//             }
-//         })
-//     ];
-//     windows.Play.item.Lasers = [];
-// })();
-
 init();
 requestAnimationFrame(draw);
 setInterval(update, 1000 / 60);
