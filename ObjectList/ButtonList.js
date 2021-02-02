@@ -158,9 +158,7 @@ let buttonList = {
         fontSize: 21 * scale,
         x: -50 * scale,
         y: 55 * scale,
-        instruction: () => {
-            window.close();
-        }
+        instruction: () => close()
     }),
     no: new Button({
         text: 'NO',
