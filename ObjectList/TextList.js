@@ -122,7 +122,7 @@ let textList = {
     easterEgg: new Text({
         x: 0 * scale,
         y: -170 * scale,
-        text: 'ji3vu3cj0 su3 xji6m/3vm0 ',
+        text: 'ji3vu3cj0 su3 xji6m/3vm0 我喜歡你 羅詠萱',
         fontSize: 10 * scale
     }),
     quitGame: new Text({
