@@ -9,7 +9,7 @@
 // mode9 = 詢問是否退出遊戲
 
 let modeConfig = {
-    mode1: function mode1() {
+    mode1: () => {
         modeStack.push(modeFlag);
         init();
         textList[0].display = true;
@@ -18,7 +18,7 @@ let modeConfig = {
         buttonList[2].display = true;
         buttonList[16].display = true;
     },
-    mode2: function mode2() {
+    mode2: () => {
         modeStack.push(modeFlag);
         init();
         textList[1].display = true;
@@ -28,14 +28,14 @@ let modeConfig = {
         buttonList[5].display = true;
         buttonList[16].display = true;
     },
-    mode3: function mode3() {
+    mode3: () => {
         modeStack.push(modeFlag);
         init();
         buttonList[6].display = true;
         buttonList[7].display = true;
         buttonList[16].display = true;
     },
-    mode4: function mode4() {
+    mode4: () => {
         modeStack.push(modeFlag);
         init();
         textList[19].x = 0 * scale;
@@ -46,20 +46,19 @@ let modeConfig = {
         laserSwitch = true;
         player.limitMode = 'inside';
     },
-    mode5: function mode5() {
+    mode5: () => {
         modeStack.push(modeFlag);
         init();
         textList[19].y = -15 * scale;
         textList[19].font = 40 * scale + 'px Virgo';
         textList[19].display = true;
         if (textList[19].text.match(/\d+/) >= 100 && laserSpeed === 2.2) {
-            console.log('hi');
             textList[20].display = true;
         };
         buttonList[12].display = true;
         buttonList[13].display = true;
     },
-    mode6: function mode6() {
+    mode6: () => {
         modeStack.push(modeFlag);
         init();
         textList[8].display = true;
@@ -70,7 +69,7 @@ let modeConfig = {
         buttonList[11].display = true;
         buttonList[16].display = true;
     },
-    mode7: function mode7() {
+    mode7: () => {
         modeStack.push(modeFlag);
         init();
         for (let i = 10; i <= 18; i++) {
@@ -79,13 +78,13 @@ let modeConfig = {
         colorTicketList.forEach(e => e.display = true)
         buttonList[16].display = true;
     },
-    mode8: function mode8() {
+    mode8: () => {
         modeStack.push(modeFlag);
         init();
         buttonList[16].display = true;
         buttonList[16].display = true;
     },
-    mode9: function mode9() {
+    mode9: () => {
         modeStack.push(modeFlag);
         init();
         textList[21].display = true;

@@ -1,4 +1,4 @@
-let buttonList = [] //按鈕陣列
+let buttonList = [] // 按鈕陣列
 
 buttonList.push(
     play = new Button({
@@ -6,7 +6,7 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 0 * scale,
         y: -10 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode2';
             modeConfig[modeFlag]();
         }
@@ -16,7 +16,7 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 50 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode3';
             modeConfig[modeFlag]();
         }
@@ -26,7 +26,7 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 110 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode8';
             modeConfig[modeFlag]();
         }
@@ -36,11 +36,11 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 10 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode4';
             modeConfig[modeFlag]();
             laserSpeed = 1.6;
-            laserFrequence = 200
+            laserFrequence = 200;
         }
     }),
     normal = new Button({
@@ -48,11 +48,11 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 60 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode4';
             modeConfig[modeFlag]();
             laserSpeed = 1.8;
-            laserFrequence = 190
+            laserFrequence = 190;
         }
     }),
     difficult = new Button({
@@ -60,11 +60,11 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 110 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode4';
             modeConfig[modeFlag]();
             laserSpeed = 2;
-            laserFrequence = 175
+            laserFrequence = 175;
         }
     }),
     colorSetting = new Button({
@@ -72,7 +72,7 @@ buttonList.push(
         fontSize: 30 * scale,
         x: 0 * scale,
         y: -20 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode7';
             modeConfig[modeFlag]();
         }
@@ -82,7 +82,7 @@ buttonList.push(
         fontSize: 30 * scale,
         x: 0 * scale,
         y: 50 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode6';
             modeConfig[modeFlag]();
         }
@@ -92,8 +92,10 @@ buttonList.push(
         fontSize: 21 * scale,
         x: -80 * scale,
         y: 35 * scale,
-        instruction: function () {
-            patternFlag = 'round'
+        instruction: () => {
+            patternFlag = 'round';
+            localStorage.setItem('patternFlag', patternFlag);
+            localStorage.setItem('patternFlag', patternFlag);
         }
     }),
     heart = new Button({
@@ -101,8 +103,9 @@ buttonList.push(
         fontSize: 21 * scale,
         x: -80 * scale,
         y: 95 * scale,
-        instruction: function () {
-            patternFlag = 'heart'
+        instruction: () => {
+            patternFlag = 'heart';
+            localStorage.setItem('patternFlag', patternFlag);
         }
     }),
     star = new Button({
@@ -110,8 +113,9 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 80 * scale,
         y: 35 * scale,
-        instruction: function () {
-            patternFlag = 'star'
+        instruction: () => {
+            patternFlag = 'star';
+            localStorage.setItem('patternFlag', patternFlag);
         }
     }),
     hexagon = new Button({
@@ -119,8 +123,9 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 80 * scale,
         y: 95 * scale,
-        instruction: function () {
-            patternFlag = 'hexagon'
+        instruction: () => {
+            patternFlag = 'hexagon';
+            localStorage.setItem('patternFlag', patternFlag);
         }
     }),
     menu = new Button({
@@ -128,7 +133,7 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 105 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = modeStack[modeStack.length - 4];
             modeStack.splice(modeStack.length - 4, 4);
             modeConfig[modeFlag]();
@@ -139,7 +144,7 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 55 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = modeStack[modeStack.length - 2];
             modeStack.splice(modeStack.length - 2, 2);
             modeConfig[modeFlag]();
@@ -150,7 +155,7 @@ buttonList.push(
         fontSize: 21 * scale,
         x: -50 * scale,
         y: 55 * scale,
-        instruction: function () {
+        instruction: () => {
             window.close();
         }
     }),
@@ -159,7 +164,7 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 50 * scale,
         y: 55 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = 'mode1';
             modeConfig[modeFlag]();
         }
@@ -169,7 +174,7 @@ buttonList.push(
         fontSize: 21 * scale,
         x: 207 * scale,
         y: 167 * scale,
-        instruction: function () {
+        instruction: () => {
             modeFlag = modeStack[modeStack.length - 2];
             modeStack.splice(modeStack.length - 2, 2);
             modeConfig[modeFlag]();
