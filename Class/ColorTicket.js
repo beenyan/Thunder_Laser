@@ -1,5 +1,3 @@
-/** @type {HTMLCanvasElement} */ // 宣告作業環境
-
 class ColorTicket { // 色票類別
     constructor(args) {
         let def = {

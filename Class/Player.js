@@ -1,5 +1,3 @@
-/** @type {HTMLCanvasElement} */ // 宣告作業環境
-
 class Player { // 玩家標點物件
     constructor(args) {
         let def = {

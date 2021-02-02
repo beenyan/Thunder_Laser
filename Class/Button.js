@@ -1,5 +1,3 @@
-/** @type {HTMLCanvasElement} */ // 宣告作業環境
-
 class Button { // 按鈕類別
    constructor(args) {
       let def = {

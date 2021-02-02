@@ -1,5 +1,3 @@
-/** @type {HTMLCanvasElement} */ // 宣告作業環境
-
 class Laser { // 雷射類別
    constructor(args) {
       let def = {
