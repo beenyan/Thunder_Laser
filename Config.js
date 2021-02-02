@@ -18,8 +18,10 @@ let nowColor = colorConfig[localStorage.getItem('colorFlag') ? localStorage.getI
 // 聲音
 let BGM = new Audio('Audio/BGM.ogg'); // 背景音樂
 BGM.loop = true;
+BGM.volume = 0.3;
 BGM.play();
 
 let Thunder_Laser_Music = new Audio('Audio/Thunder_Laser.ogg'); // 發出雷射
+BGM.volume = 0.6;
 
-let Lose =  new Audio('Audio/Lose.ogg'); // 發出雷射
+let Lose = new Audio('Audio/Lose.ogg'); // 發出雷射
