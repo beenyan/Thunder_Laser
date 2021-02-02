@@ -7,6 +7,6 @@ canvas.addEventListener('mousemove', e => { // 滑鼠移動事件
 })
 
 canvas.addEventListener('click', () => { // 滑鼠點擊事件
-    buttonList.filter(e => e.display).forEach(e => e.ColliDetect()); // 檢查每一個button的碰撞
+    Object.entries(buttonList).filter(e => e[1].display).forEach(e => e[1].ColliDetect()); // 檢查每一個button的碰撞
     colorTicketList.filter(e => e.display).forEach(e => e.ColliDetect()); // 檢查每一個button的碰撞
 })

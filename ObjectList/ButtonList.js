@@ -1,7 +1,5 @@
-let buttonList = [] // 按鈕陣列
-
-buttonList.push(
-    play = new Button({
+let buttonList = {
+    play: new Button({
         text: 'PLAY',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -11,7 +9,7 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-    appearanceSetting = new Button({
+    appearanceSetting: new Button({
         text: 'APPEARANCE SETTING',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -21,7 +19,7 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-    producerList = new Button({
+    producerList: new Button({
         text: 'PRODUCER LIST',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -31,7 +29,7 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-    easy = new Button({
+    easy: new Button({
         text: 'EASY',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -43,7 +41,7 @@ buttonList.push(
             laserFrequence = 200;
         }
     }),
-    normal = new Button({
+    normal: new Button({
         text: 'NORMAL',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -55,7 +53,7 @@ buttonList.push(
             laserFrequence = 190;
         }
     }),
-    difficult = new Button({
+    difficult: new Button({
         text: 'DIFFICULT',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -67,7 +65,7 @@ buttonList.push(
             laserFrequence = 175;
         }
     }),
-    colorSetting = new Button({
+    colorSetting: new Button({
         text: 'COLOR SETTING',
         fontSize: 30 * scale,
         x: 0 * scale,
@@ -77,7 +75,7 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-    patternSetting = new Button({
+    patternSetting: new Button({
         text: 'PATTERN SETTING',
         fontSize: 30 * scale,
         x: 0 * scale,
@@ -87,7 +85,7 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-    round = new Button({
+    round: new Button({
         text: 'ROUND',
         fontSize: 21 * scale,
         x: -80 * scale,
@@ -95,10 +93,9 @@ buttonList.push(
         instruction: () => {
             patternFlag = 'round';
             localStorage.setItem('patternFlag', patternFlag);
-            localStorage.setItem('patternFlag', patternFlag);
         }
     }),
-    heart = new Button({
+    heart: new Button({
         text: 'HEART',
         fontSize: 21 * scale,
         x: -80 * scale,
@@ -108,7 +105,7 @@ buttonList.push(
             localStorage.setItem('patternFlag', patternFlag);
         }
     }),
-    star = new Button({
+    star: new Button({
         text: 'STAR',
         fontSize: 21 * scale,
         x: 80 * scale,
@@ -118,7 +115,7 @@ buttonList.push(
             localStorage.setItem('patternFlag', patternFlag);
         }
     }),
-    hexagon = new Button({
+    hexagon: new Button({
         text: 'HEXAGON',
         fontSize: 21 * scale,
         x: 80 * scale,
@@ -128,7 +125,7 @@ buttonList.push(
             localStorage.setItem('patternFlag', patternFlag);
         }
     }),
-    menu = new Button({
+    menu: new Button({
         text: 'MENU',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -139,7 +136,7 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-    again = new Button({
+    again: new Button({
         text: 'AGAIN',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -150,7 +147,7 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-    yes = new Button({
+    yes: new Button({
         text: 'YES',
         fontSize: 21 * scale,
         x: -50 * scale,
@@ -159,7 +156,7 @@ buttonList.push(
             window.close();
         }
     }),
-    no = new Button({
+    no: new Button({
         text: 'NO',
         fontSize: 21 * scale,
         x: 50 * scale,
@@ -169,7 +166,7 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-    exit = new Button({
+    exit: new Button({
         text: 'EXIT',
         fontSize: 21 * scale,
         x: 207 * scale,
@@ -180,4 +177,4 @@ buttonList.push(
             modeConfig[modeFlag]();
         }
     }),
-)
+}

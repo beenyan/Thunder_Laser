@@ -13,27 +13,27 @@ let modeConfig = {
         modeStack.push(modeFlag);
         init();
         textList['TLTitle'].display = true;
-        buttonList[0].display = true;
-        buttonList[1].display = true;
-        buttonList[2].display = true;
-        buttonList[16].display = true;
+        buttonList['play'].display = true;
+        buttonList['appearanceSetting'].display = true;
+        buttonList['producerList'].display = true;
+        buttonList['exit'].display = true;
     },
     mode2: () => {
         modeStack.push(modeFlag);
         init();
         textList['howToPlay'].display = true;
         textList['chooseMod'].display = true;
-        buttonList[3].display = true;
-        buttonList[4].display = true;
-        buttonList[5].display = true;
-        buttonList[16].display = true;
+        buttonList['easy'].display = true;
+        buttonList['normal'].display = true;
+        buttonList['difficult'].display = true;
+        buttonList['exit'].display = true;
     },
     mode3: () => {
         modeStack.push(modeFlag);
         init();
-        buttonList[6].display = true;
-        buttonList[7].display = true;
-        buttonList[16].display = true;
+        buttonList['colorSetting'].display = true;
+        buttonList['patternSetting'].display = true;
+        buttonList['exit'].display = true;
     },
     mode4: () => {
         modeStack.push(modeFlag);
@@ -55,19 +55,19 @@ let modeConfig = {
         if (textList['scoreCounter'].text.match(/\d+/) >= 100 && laserSpeed === 2.2) {
             textList['easterEgg'].display = true;
         };
-        buttonList[12].display = true;
-        buttonList[13].display = true;
+        buttonList['menu'].display = true;
+        buttonList['again'].display = true;
     },
     mode6: () => {
         modeStack.push(modeFlag);
         init();
         textList['choosePattern1'].display = true;
         textList['choosePattern2'].display = true;
-        buttonList[8].display = true;
-        buttonList[9].display = true;
-        buttonList[10].display = true;
-        buttonList[11].display = true;
-        buttonList[16].display = true;
+        buttonList['round'].display = true;
+        buttonList['heart'].display = true;
+        buttonList['star'].display = true;
+        buttonList['hexagon'].display = true;
+        buttonList['exit'].display = true;
     },
     mode7: () => {
         modeStack.push(modeFlag);
@@ -77,19 +77,19 @@ let modeConfig = {
         ['chooseColorComb', 'yellow', 'pink', 'blue',
             'cyan', 'purple', 'gray', 'castella'].forEach(e => textList[e].display = true);
         colorTicketList.forEach(e => e.display = true)
-        buttonList[16].display = true;
+        buttonList['exit'].display = true;
     },
     mode8: () => {
         modeStack.push(modeFlag);
         init();
-        buttonList[16].display = true;
-        buttonList[16].display = true;
+        buttonList['exit'].display = true;
+        buttonList['exit'].display = true;
     },
     mode9: () => {
         modeStack.push(modeFlag);
         init();
         textList['quitGame'].display = true;
-        buttonList[14].display = true;
-        buttonList[15].display = true;
+        buttonList['yes'].display = true;
+        buttonList['no'].display = true;
     },
 }
