@@ -131,6 +131,9 @@ let buttonList = {
         x: 0 * scale,
         y: 105 * scale,
         instruction: () => {
+            Lose.pause();
+            Lose.currentTime = BGM.currentTime = 0;
+            BGM.play();
             modeFlag = modeStack[modeStack.length - 4];
             modeStack.splice(modeStack.length - 4, 4);
             modeConfig[modeFlag]();
@@ -142,6 +145,9 @@ let buttonList = {
         x: 0 * scale,
         y: 55 * scale,
         instruction: () => {
+            Lose.pause();
+            Lose.currentTime = BGM.currentTime = 0;
+            BGM.play();
             modeFlag = modeStack[modeStack.length - 2];
             modeStack.splice(modeStack.length - 2, 2);
             modeConfig[modeFlag]();

@@ -83,6 +83,8 @@ class Laser { // 雷射類別
          }
       }
       if (collision === true) { // 如果碰撞到就初始化並且更改旗標
+         BGM.pause();
+         Lose.play();
          if (!localStorage.getItem('score') || localStorage.getItem('score') < scoreCount)
             localStorage.setItem('score', scoreCount);
          init();
