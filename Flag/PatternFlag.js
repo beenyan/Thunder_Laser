@@ -11,7 +11,7 @@ let patternConfig = {
       ctx.translate(player.x, player.y);
       ctx.lineWidth = player.lineWidth;
       ctx.beginPath();
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 1; i <= 5; ++i) {
          ctx.lineTo(Math.cos((18 + 72 * i) / 180 * Math.PI) * (player.r * 18 / 22), -Math.sin((18 + 72 * i) / 180 * Math.PI) * (player.r * 18 / 22));
          ctx.lineTo(Math.cos((54 + 72 * i) / 180 * Math.PI) * (player.r * 18 / 22) / 2, -Math.sin((54 + 72 * i) / 180 * Math.PI) * (player.r * 18 / 22) / 2);
       }
@@ -23,7 +23,7 @@ let patternConfig = {
    heart: () => { // 愛心
       ctx.save();
 
-      ctx.translate(player.x, player.y - 5.5 * scale)
+      ctx.translate(player.x, player.y - 5.5 * scale);
       ctx.moveTo(0, 0);
       let tempScale = scale * 0.4;
       ctx.bezierCurveTo(0 * tempScale, -4.5 * tempScale, -4.5 * tempScale, -18 * tempScale, -22.5 * tempScale, -18 * tempScale);
@@ -37,11 +37,11 @@ let patternConfig = {
    hexagon: () => { // 六角形
       ctx.save();
 
-      ctx.translate(player.x, player.y)
+      ctx.translate(player.x, player.y);
       ctx.lineWidth = player.lineWidth;
       ctx.moveTo(0, 0);
       ctx.beginPath();
-      for (let i = 1; i <= 6; i++) {
+      for (let i = 1; i <= 6; ++i) {
          ctx.lineTo(Math.cos((60 * i) / 180 * Math.PI) * (player.r * 18 / 22), -Math.sin((60 * i) / 180 * Math.PI) * (player.r * 18 / 22));
       }
       ctx.closePath();

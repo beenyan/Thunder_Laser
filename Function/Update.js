@@ -10,7 +10,7 @@ function update() { // 更新數據
          laserList.push(new Laser({ // 新增雷射
             speed: laserSpeed * scale,
             length: laserLength * scale,
-         }))
+         }));
          Thunder_Laser_Music.play();
       };
       laserList = laserList.filter(e => e.outscreen()); // 刪除超出螢幕的雷射

@@ -19,7 +19,7 @@ class Border { // 邊界類別
 
          ctx.lineWidth = this.lineWidth;
          ctx.strokeStyle = nowColor.darkColor;
-         ctx.strokeRect(this.borderLeft, this.borderLeft, this.w - this.borderLeft * 2, this.h - this.borderTop * 2)
+         ctx.strokeRect(this.borderLeft, this.borderLeft, this.w - this.borderLeft * 2, this.h - this.borderTop * 2);
 
          ctx.restore();
       }

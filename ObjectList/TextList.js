@@ -128,7 +128,13 @@ let textList = {
     quitGame: new Text({
         x: 0 * scale,
         y: -10 * scale,
-        text: 'ARE YOU SURE TO\nQUIT THE GAME?\n',
+        text: 'ARE YOU SURE TO\nQUIT THE GAME',
+        fontSize: 30 * scale
+    }),
+    producerList: new Text({
+        x: 0 * scale,
+        y: -150 * scale,
+        text: 'Author：Human\n1：1\n2：2\n3：3\n4：4\n5：5\n6：6\n7：7\n8：8\n9：9\nAudio：魔王魂',
         fontSize: 30 * scale
     }),
 }

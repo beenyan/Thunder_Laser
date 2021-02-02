@@ -17,13 +17,13 @@ class ColorTicket { // 色票類別
 
         ctx.fillStyle = colorConfig[this.colorFlag].lightColor;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, Math.PI * 1.5, Math.PI * 0.5)
+        ctx.arc(this.x, this.y, this.r, Math.PI * 1.5, Math.PI * 0.5);
         ctx.closePath();
         ctx.fill();
 
         ctx.fillStyle = colorConfig[this.colorFlag].darkColor;
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, Math.PI * 0.5, Math.PI * 1.5)
+        ctx.arc(this.x, this.y, this.r, Math.PI * 0.5, Math.PI * 1.5);
         ctx.closePath();
         ctx.fill();
 

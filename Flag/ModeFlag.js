@@ -99,7 +99,7 @@ let modeConfig = {
     mode8: () => {
         modeStack.push(modeFlag);
         init();
-        buttonList['exit'].display = true;
+        textList['producerList'].display = true;
         buttonList['exit'].display = true;
     },
     mode9: () => {

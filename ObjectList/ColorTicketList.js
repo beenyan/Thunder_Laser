@@ -36,4 +36,4 @@ colorTicketList.push(
         y: 313 * scale,
         colorFlag: 'castella',
     }),
-)
+);

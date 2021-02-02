@@ -16,6 +16,9 @@ let player = new Player({ // 創建玩家
    limitMode: 'outside'
 });
 
-modeConfig[modeFlag](); // 初始化
-requestAnimationFrame(draw); // 重繪畫布
-setInterval(update, 0); // 更新物件數據
+onload = () => {
+   canvas.style.opacity = 1;
+   modeConfig[modeFlag](); // 初始化
+   requestAnimationFrame(draw); // 重繪畫布
+   setInterval(update, 0); // 更新物件數據
+}
