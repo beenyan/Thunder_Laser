@@ -1,142 +1,128 @@
-let textList = []; // 字元陣列
-
-textList.push(
-    TLTitle = new Text({ // 0
+let textList = {
+    TLTitle: new Text({
         x: 0 * scale,
         y: -90 * scale,
         text: 'THUNDER LASER',
         fontSize: 35 * scale
     }),
-    howToPlay = new Text({ // 1
+    howToPlay: new Text({
         x: 0 * scale,
         y: -170 * scale,
         text: 'HOW TO PLAY：MOVE YOUR MOUSE AND TRY TO AVOID ALL SHOTS',
         fontSize: 10 * scale
     }),
-    coder = new Text({ // 2
+    coder: new Text({
         x: 50 * scale,
         y: 50 * scale,
         text: 'CODER',
         fontSize: 20 * scale
     }),
-    artEditor = new Text({ // 3
+    artEditor: new Text({
         x: 50 * scale,
         y: 50 * scale,
         text: 'ARTEDITOR',
         fontSize: 20 * scale
     }),
-    JTT = new Text({ // 4
+    JTT: new Text({
         x: 50 * scale,
         y: 50 * scale,
         text: 'JTT.BINARY',
         fontSize: 20 * scale
     }),
-    YDog = new Text({ // 5
+    YDog: new Text({
         x: 50 * scale,
         y: 50 * scale,
         text: 'Y.DOOOOOG',
         fontSize: 20 * scale
     }),
-    LJes = new Text({ // 6
+    LJes: new Text({
         x: 50 * scale,
         y: 50 * scale,
         text: 'L.JESSICA',
         fontSize: 20 * scale
     }),
-    chooseMod = new Text({ // 7
+    chooseMod: new Text({
         x: 0 * scale,
         y: -70 * scale,
         text: 'CHOOSE THE MODE YOU WANT',
         fontSize: 25 * scale
     }),
-    choosePattern1 = new Text({ // 8
+    choosePattern1: new Text({
         x: 0 * scale,
         y: -85 * scale,
         text: 'CHOOSE THE PATTERN',
         fontSize: 30 * scale
     }),
-    choosePattern2 = new Text({ // 9
+    choosePattern2: new Text({
         x: 0 * scale,
         y: -60 * scale,
         text: 'YOU WANT',
         fontSize: 30 * scale
     }),
-    chooseColorComb1 = new Text({ // 10
+    chooseColorComb: new Text({
         x: 0 * scale,
         y: -105 * scale,
-        text: 'CHOOSE THE COLOR',
+        text: 'CHOOSE THE COLOR\nCOMBINATION YOU WANT',
         fontSize: 30 * scale
     }),
-    chooseColorComb2 = new Text({ // 11
-        x: 0 * scale,
-        y: -80 * scale,
-        text: 'COMBINATION YOU WANT',
-        fontSize: 30 * scale
-    }),
-    yellow = new Text({ // 12
+    yellow: new Text({
         x: -140 * scale,
         y: -15 * scale,
         text: 'YELLOW',
         fontSize: 21 * scale
     }),
-    pink = new Text({ // 13
+    pink: new Text({
         x: 0 * scale,
         y: -15 * scale,
         text: 'PINK',
         fontSize: 21 * scale
     }),
-    blue = new Text({ // 14
+    blue: new Text({
         x: 140 * scale,
         y: -15 * scale,
         text: 'BLUE',
         fontSize: 21 * scale
     }),
-    cyan = new Text({ // 15
+    cyan: new Text({
         x: -140 * scale,
         y: 45 * scale,
         text: 'CYAN',
         fontSize: 21 * scale
     }),
-    purple = new Text({ // 16
+    purple: new Text({
         x: 0 * scale,
         y: 45 * scale,
         text: 'PURPLE',
         fontSize: 21 * scale
     }),
-    gray = new Text({ // 17
+    gray: new Text({
         x: 140 * scale,
         y: 45 * scale,
         text: 'GRAY',
         fontSize: 21 * scale
     }),
-    castella = new Text({ // 18
+    castella: new Text({
         x: 0 * scale,
         y: 105 * scale,
         text: 'CASTELLA',
         fontSize: 21 * scale
     }),
-    scoreCounter = new Text({ // 19
+    scoreCounter: new Text({
         x: 0 * scale,
         y: -162.5 * scale,
         text: 'SCORE：00',
         fontSize: 15 * scale
     }),
-    easterEgg = new Text({ // 20
+    easterEgg: new Text({
         x: 0 * scale,
         y: -170 * scale,
         text: 'ji3vu3cj0 su3 xji6m/3vm0 ',
         fontSize: 10 * scale
     }),
-    quitGame1 = new Text({ // 21
-        x: 0 * scale,
-        y: -40 * scale,
-        text: 'ARE YOU SURE TO',
-        fontSize: 30 * scale
-    }),
-    quitGame1 = new Text({ // 21
+    quitGame: new Text({
         x: 0 * scale,
         y: -10 * scale,
-        text: 'QUIT THE GAME?',
+        text: 'ARE YOU SURE TO\nQUIT THE GAME?\n',
         fontSize: 30 * scale
     }),
-)
+}

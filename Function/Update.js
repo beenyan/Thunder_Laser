@@ -1,7 +1,7 @@
 function update() { // 更新數據
    if (laserSwitch === true) {
       laserList.forEach(e => e.update()); // 更新每個雷射位
-      textList[19].text = `SCORE：${scoreCount}`; // 變更score的分數
+      textList['scoreCounter'].text = `SCORE：${scoreCount}`; // 變更score的分數
       if (++time % laserFrequence === 0) { // 每隔一段時間加入一個雷射
          time = 0; // 時間重置
          scoreCount = scoreCount + 1; // 時間單位加一

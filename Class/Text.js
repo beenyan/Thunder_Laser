@@ -14,16 +14,19 @@ class Text { // 文字類別
    }
    draw() { // 繪圖動作
       ctx.font = this.font;
-      this.w = ctx.measureText(this.text).width;
-      this.h = parseInt(this.font.match(/\d+/));
+      let heigher = 0;
+      this.text.split('\n').forEach(text => {
+         this.w = ctx.measureText(text).width;
+         this.h = parseInt(this.font.match(/\d+/));
+         ctx.save();
 
-      ctx.save();
+         ctx.fillStyle = nowColor.darkColor;
+         ctx.font = this.font;
 
-      ctx.fillStyle = nowColor.darkColor;
-      ctx.font = this.font;
+         ctx.fillText(text, this.x - this.w / 2 + 240 * scale, this.y - this.h / 2 + heigher + 180 * scale);
 
-      ctx.fillText(this.text, this.x - this.w / 2 + 240 * scale, this.y - this.h / 2 + 180 * scale);
-
-      ctx.restore();
+         heigher += this.h;
+         ctx.restore();
+      });
    }
 }

@@ -12,7 +12,7 @@ let modeConfig = {
     mode1: () => {
         modeStack.push(modeFlag);
         init();
-        textList[0].display = true;
+        textList['TLTitle'].display = true;
         buttonList[0].display = true;
         buttonList[1].display = true;
         buttonList[2].display = true;
@@ -21,8 +21,8 @@ let modeConfig = {
     mode2: () => {
         modeStack.push(modeFlag);
         init();
-        textList[1].display = true;
-        textList[7].display = true;
+        textList['howToPlay'].display = true;
+        textList['chooseMod'].display = true;
         buttonList[3].display = true;
         buttonList[4].display = true;
         buttonList[5].display = true;
@@ -38,10 +38,10 @@ let modeConfig = {
     mode4: () => {
         modeStack.push(modeFlag);
         init();
-        textList[19].x = 0 * scale;
-        textList[19].y = -162.5 * scale;
-        textList[19].font = 15 * scale + 'px Virgo';
-        textList[19].display = true;
+        textList['scoreCounter'].x = 0 * scale;
+        textList['scoreCounter'].y = -162.5 * scale;
+        textList['scoreCounter'].font = 15 * scale + 'px Virgo';
+        textList['scoreCounter'].display = true;
         insideBorder.display = true;
         laserSwitch = true;
         player.limitMode = 'inside';
@@ -49,11 +49,11 @@ let modeConfig = {
     mode5: () => {
         modeStack.push(modeFlag);
         init();
-        textList[19].y = -15 * scale;
-        textList[19].font = 40 * scale + 'px Virgo';
-        textList[19].display = true;
-        if (textList[19].text.match(/\d+/) >= 100 && laserSpeed === 2.2) {
-            textList[20].display = true;
+        textList['scoreCounter'].y = -15 * scale;
+        textList['scoreCounter'].font = 40 * scale + 'px Virgo';
+        textList['scoreCounter'].display = true;
+        if (textList['scoreCounter'].text.match(/\d+/) >= 100 && laserSpeed === 2.2) {
+            textList['easterEgg'].display = true;
         };
         buttonList[12].display = true;
         buttonList[13].display = true;
@@ -61,8 +61,8 @@ let modeConfig = {
     mode6: () => {
         modeStack.push(modeFlag);
         init();
-        textList[8].display = true;
-        textList[9].display = true;
+        textList['choosePattern1'].display = true;
+        textList['choosePattern2'].display = true;
         buttonList[8].display = true;
         buttonList[9].display = true;
         buttonList[10].display = true;
@@ -72,9 +72,10 @@ let modeConfig = {
     mode7: () => {
         modeStack.push(modeFlag);
         init();
-        for (let i = 10; i <= 18; i++) {
-            textList[i].display = true
-        }
+
+        // Color Words
+        ['chooseColorComb', 'yellow', 'pink', 'blue',
+            'cyan', 'purple', 'gray', 'castella'].forEach(e => textList[e].display = true);
         colorTicketList.forEach(e => e.display = true)
         buttonList[16].display = true;
     },
@@ -87,8 +88,7 @@ let modeConfig = {
     mode9: () => {
         modeStack.push(modeFlag);
         init();
-        textList[21].display = true;
-        textList[22].display = true;
+        textList['quitGame'].display = true;
         buttonList[14].display = true;
         buttonList[15].display = true;
     },
