@@ -83,9 +83,12 @@ class Laser { // 雷射類別
          }
       }
       if (collision === true) { // 如果碰撞到就初始化並且更改旗標
+         if (!localStorage.getItem('score') || localStorage.getItem('score') < scoreCount)
+            localStorage.setItem('score', scoreCount);
          init();
          modeFlag = 'mode5';
          modeConfig[modeFlag]();
+         textList['MVP'].text = `MVP：${localStorage.getItem('score')}`;
       }
    }
    outscreen() { // 超出螢幕

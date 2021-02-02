@@ -108,9 +108,15 @@ let textList = {
         fontSize: 21 * scale
     }),
     scoreCounter: new Text({
-        x: 0 * scale,
+        x: 70 * scale,
         y: -162.5 * scale,
-        text: 'SCORE：00',
+        text: 'SCORE：0',
+        fontSize: 15 * scale
+    }),
+    MVP: new Text({
+        x: -70 * scale,
+        y: -162.5 * scale,
+        text: `MVP：${localStorage.getItem('score') ? localStorage.getItem('score') : 0}`,
         fontSize: 15 * scale
     }),
     easterEgg: new Text({

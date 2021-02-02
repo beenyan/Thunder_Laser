@@ -38,10 +38,18 @@ let modeConfig = {
     mode4: () => {
         modeStack.push(modeFlag);
         init();
-        textList['scoreCounter'].x = 0 * scale;
-        textList['scoreCounter'].y = -162.5 * scale;
-        textList['scoreCounter'].font = 15 * scale + 'px Virgo';
-        textList['scoreCounter'].display = true;
+        Object.assign(textList['scoreCounter'], {
+            x: 70 * scale,
+            y: -162.5 * scale,
+            font: 15 * scale + 'px Virgo',
+            display: true
+        });
+        Object.assign(textList['MVP'], {
+            x: -70 * scale,
+            y: -162.5 * scale,
+            font: 15 * scale + 'px Virgo',
+            display: true
+        });
         insideBorder.display = true;
         laserSwitch = true;
         player.limitMode = 'inside';
@@ -49,9 +57,18 @@ let modeConfig = {
     mode5: () => {
         modeStack.push(modeFlag);
         init();
-        textList['scoreCounter'].y = -15 * scale;
-        textList['scoreCounter'].font = 40 * scale + 'px Virgo';
-        textList['scoreCounter'].display = true;
+        Object.assign(textList['scoreCounter'], {
+            x: 0 * scale,
+            y: -15 * scale,
+            font: 40 * scale + 'px Virgo',
+            display: true
+        })
+        Object.assign(textList['MVP'], {
+            x: 0 * scale,
+            y: -70 * scale,
+            font: 50 * scale + 'px Virgo',
+            display: true
+        });
         if (textList['scoreCounter'].text.match(/\d+/) >= 100 && laserSpeed === 2.2) {
             textList['easterEgg'].display = true;
         };
