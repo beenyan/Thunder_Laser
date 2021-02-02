@@ -11,36 +11,6 @@ let textList = {
         text: 'HOW TO PLAY：MOVE YOUR MOUSE AND TRY TO AVOID ALL SHOTS',
         fontSize: 10 * scale
     }),
-    coder: new Text({
-        x: 50 * scale,
-        y: 50 * scale,
-        text: 'CODER',
-        fontSize: 20 * scale
-    }),
-    artEditor: new Text({
-        x: 50 * scale,
-        y: 50 * scale,
-        text: 'ARTEDITOR',
-        fontSize: 20 * scale
-    }),
-    JTT: new Text({
-        x: 50 * scale,
-        y: 50 * scale,
-        text: 'JTT.BINARY',
-        fontSize: 20 * scale
-    }),
-    YDog: new Text({
-        x: 50 * scale,
-        y: 50 * scale,
-        text: 'Y.DOOOOOG',
-        fontSize: 20 * scale
-    }),
-    LJes: new Text({
-        x: 50 * scale,
-        y: 50 * scale,
-        text: 'L.JESSICA',
-        fontSize: 20 * scale
-    }),
     chooseMod: new Text({
         x: 0 * scale,
         y: -70 * scale,
