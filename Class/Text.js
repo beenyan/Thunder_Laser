@@ -12,18 +12,15 @@ class Text { // 文字類別
    }
    draw() { // 繪圖動作
       ctx.font = this.font;
-      let heigher = 0;
-      this.text.split('\n').forEach(text => {
+      this.text.split('\n').forEach((text, index) => {
          this.w = ctx.measureText(text).width;
          this.h = parseInt(this.font.match(/\d+/));
          ctx.save();
 
          ctx.fillStyle = nowColor.darkColor;
          ctx.font = this.font;
+         ctx.fillText(text, this.x - this.w / 2 + 240 * scale, this.y - this.h / 2 + this.h * index + 180 * scale);
 
-         ctx.fillText(text, this.x - this.w / 2 + 240 * scale, this.y - this.h / 2 + heigher + 180 * scale);
-
-         heigher += this.h;
          ctx.restore();
       });
    }
