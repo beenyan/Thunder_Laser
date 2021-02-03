@@ -1,8 +1,9 @@
 window.addEventListener('mousemove', e => { // 電腦移動事件
-    player.x = player.x + (e.pageX - player.originX); // 更動變化量
-    player.y = player.y + (e.pageY - player.originY); // 更動變化量
-    player.originX = e.pageX; // 設定此刻位置為下刻位置的origin參數
-    player.originY = e.pageY; // 設定此刻位置為下課位置的origin參數
+    console.log(e);
+    player.x = player.x + (e.pageX - canvas_offset.x - player.originX); // 更動變化量
+    player.y = player.y + (e.pageY - canvas_offset.y - player.originY); // 更動變化量
+    player.originX = e.pageX - canvas_offset.x; // 設定此刻位置為下刻位置的origin參數
+    player.originY = e.pageY - canvas_offset.y; // 設定此刻位置為下課位置的origin參數
     player.move(); // 玩家修正及更改位置
     buttonList.forEach(e => e.Mousemove()); // 檢查每一個button是否被碰到
 });
