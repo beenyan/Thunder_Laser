@@ -13,27 +13,19 @@ let modeConfig = {
         modeStack.push(modeFlag);
         init();
         textList['TLTitle'].display = true;
-        buttonList['play'].display = true;
-        buttonList['appearanceSetting'].display = true;
-        buttonList['producerList'].display = true;
-        buttonList['exit'].display = true;
+        buttonList = [BTS.play, BTS.appearanceSetting, BTS.producerList, BTS.exit];
     },
     mode2: () => {
         modeStack.push(modeFlag);
         init();
         textList['howToPlay'].display = true;
         textList['chooseMod'].display = true;
-        buttonList['easy'].display = true;
-        buttonList['normal'].display = true;
-        buttonList['difficult'].display = true;
-        buttonList['exit'].display = true;
+        buttonList = [BTS.easy, BTS.normal, BTS.difficult, BTS.exit];
     },
     mode3: () => {
         modeStack.push(modeFlag);
         init();
-        buttonList['colorSetting'].display = true;
-        buttonList['patternSetting'].display = true;
-        buttonList['exit'].display = true;
+        buttonList = [BTS.colorSetting, BTS.patternSetting, BTS.exit];
     },
     mode4: () => {
         modeStack.push(modeFlag);
@@ -52,6 +44,7 @@ let modeConfig = {
         });
         insideBorder.display = true;
         laserSwitch = true;
+        buttonList = [];
         player.limitMode = 'inside';
     },
     mode5: () => {
@@ -72,19 +65,14 @@ let modeConfig = {
         if (textList['scoreCounter'].text.match(/\d+/) >= 100 && laserSpeed >= 2) {
             textList['easterEgg'].display = true;
         };
-        buttonList['menu'].display = true;
-        buttonList['again'].display = true;
+        buttonList = [BTS.menu, BTS.again];
     },
     mode6: () => {
         modeStack.push(modeFlag);
         init();
         textList['choosePattern1'].display = true;
         textList['choosePattern2'].display = true;
-        buttonList['round'].display = true;
-        buttonList['heart'].display = true;
-        buttonList['star'].display = true;
-        buttonList['hexagon'].display = true;
-        buttonList['exit'].display = true;
+        buttonList = [BTS.round, BTS.heart, BTS.star, BTS.hexagon, BTS.exit];
     },
     mode7: () => {
         modeStack.push(modeFlag);
@@ -94,19 +82,18 @@ let modeConfig = {
         ['chooseColorComb', 'yellow', 'pink', 'blue',
             'cyan', 'purple', 'gray', 'castella'].forEach(e => textList[e].display = true);
         colorTicketList.forEach(e => e.display = true)
-        buttonList['exit'].display = true;
+        buttonList = [BTS.exit];
     },
     mode8: () => {
         modeStack.push(modeFlag);
         init();
         textList['producerList'].display = true;
-        buttonList['exit'].display = true;
+        buttonList = [BTS.exit];
     },
     mode9: () => {
         modeStack.push(modeFlag);
         init();
         textList['quitGame'].display = true;
-        buttonList['yes'].display = true;
-        buttonList['no'].display = true;
+        buttonList = [BTS.yes, BTS.no];
     },
 }

@@ -1,4 +1,5 @@
-let buttonList = {
+let buttonList = [];
+let BTS = {
     play: new Button({
         text: 'PLAY',
         fontSize: 21 * scale,

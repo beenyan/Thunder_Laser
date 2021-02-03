@@ -1,7 +1,6 @@
 class Button { // 按鈕類別
    constructor(args) {
       let def = {
-         display: false, // 顯示開關
          x: 0, // X位置
          y: 0, // Y位置
          font: `${args.fontSize}px Virgo`, // 設定字元大小及字體
