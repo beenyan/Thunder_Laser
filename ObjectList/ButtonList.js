@@ -159,6 +159,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: -50 * scale,
         y: 55 * scale,
+        key: 'Escape',
         instruction: () => close()
     }),
     no: new Button({
@@ -176,6 +177,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: 207 * scale,
         y: 167 * scale,
+        key: 'Escape',
         instruction: () => {
             modeFlag = modeStack[modeStack.length - 2];
             modeStack.splice(modeStack.length - 2, 2);

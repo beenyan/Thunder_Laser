@@ -88,7 +88,7 @@ class Laser { // 雷射類別
          init();
          modeFlag = 'mode5';
          modeConfig[modeFlag]();
-         textList['MVP'].text = `MVP：${localStorage.getItem('score')}`;
+         TXT.MVP.text = `MVP：${localStorage.getItem('score')}`;
       }
    }
    outscreen() { // 超出螢幕

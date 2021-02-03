@@ -1,7 +1,6 @@
 class Text { // 文字類別
    constructor(args) {
       let def = {
-         display: false, // 顯示開關
          x: ww / 2, // X位置
          y: wh / 2, // Y位置
          font: `${args.fontSize}px Virgo`, // 設定字元大小及字體

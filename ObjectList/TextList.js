@@ -1,4 +1,5 @@
-let textList = {
+let textList = [];
+let TXT = {
     TLTitle: new Text({
         x: 0 * scale,
         y: -90 * scale,
@@ -17,16 +18,10 @@ let textList = {
         text: 'CHOOSE THE MODE YOU WANT',
         fontSize: 25 * scale
     }),
-    choosePattern1: new Text({
+    choosePattern: new Text({
         x: 0 * scale,
         y: -85 * scale,
-        text: 'CHOOSE THE PATTERN',
-        fontSize: 30 * scale
-    }),
-    choosePattern2: new Text({
-        x: 0 * scale,
-        y: -60 * scale,
-        text: 'YOU WANT',
+        text: 'CHOOSE THE PATTERN\nYOU WANT',
         fontSize: 30 * scale
     }),
     chooseColorComb: new Text({

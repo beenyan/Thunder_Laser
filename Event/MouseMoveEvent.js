@@ -11,3 +11,15 @@ canvas.addEventListener('click', () => { // 滑鼠點擊事件
     buttonList.forEach(e => e.ColliDetect()); // 檢查每一個button的碰撞
     colorTicketList.filter(e => e.display).forEach(e => e.ColliDetect()); // 檢查每一個button的碰撞
 });
+window.addEventListener('keydown', (keydown) => {
+    if (keydown.repeat) return;
+    switch (keydown.code) {
+        case 'Escape': // Esc
+            let Exit = buttonList.filter(e => e.key === 'Escape');
+            if (!Exit.length) break;
+            else Exit[0].instruction();
+            break;
+        default:
+            break;
+    }
+});

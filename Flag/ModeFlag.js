@@ -12,88 +12,81 @@ let modeConfig = {
     mode1: () => {
         modeStack.push(modeFlag);
         init();
-        textList['TLTitle'].display = true;
+        textList = [TXT.TLTitle];
         buttonList = [BTS.play, BTS.appearanceSetting, BTS.producerList, BTS.exit];
     },
     mode2: () => {
         modeStack.push(modeFlag);
         init();
-        textList['howToPlay'].display = true;
-        textList['chooseMod'].display = true;
+        textList = [TXT.howToPlay, TXT.chooseMod];
         buttonList = [BTS.easy, BTS.normal, BTS.difficult, BTS.exit];
     },
     mode3: () => {
         modeStack.push(modeFlag);
         init();
+        textList = [];
         buttonList = [BTS.colorSetting, BTS.patternSetting, BTS.exit];
     },
     mode4: () => {
         modeStack.push(modeFlag);
         init();
-        Object.assign(textList['scoreCounter'], {
+        Object.assign(TXT.scoreCounter, {
             x: 70 * scale,
             y: -162.5 * scale,
             font: 15 * scale + 'px Virgo',
-            display: true
         });
-        Object.assign(textList['MVP'], {
+        Object.assign(TXT.MVP, {
             x: -70 * scale,
             y: -162.5 * scale,
             font: 15 * scale + 'px Virgo',
-            display: true
         });
         insideBorder.display = true;
         laserSwitch = true;
+        textList = [TXT.scoreCounter, TXT.MVP];
         buttonList = [];
         player.limitMode = 'inside';
     },
     mode5: () => {
         modeStack.push(modeFlag);
         init();
-        Object.assign(textList['scoreCounter'], {
+        Object.assign(TXT.scoreCounter, {
             x: 0 * scale,
             y: -15 * scale,
             font: 40 * scale + 'px Virgo',
-            display: true
         })
-        Object.assign(textList['MVP'], {
+        Object.assign(TXT.MVP, {
             x: 0 * scale,
             y: -70 * scale,
             font: 50 * scale + 'px Virgo',
-            display: true
         });
-        if (textList['scoreCounter'].text.match(/\d+/) >= 100 && laserSpeed >= 2) {
-            textList['easterEgg'].display = true;
+        if (TXT.scoreCounter.text.match(/\d+/) >= 100 && laserSpeed >= 2) {
+            textList.push(TXT.easterEgg);
         };
         buttonList = [BTS.menu, BTS.again];
     },
     mode6: () => {
         modeStack.push(modeFlag);
         init();
-        textList['choosePattern1'].display = true;
-        textList['choosePattern2'].display = true;
+        textList = [TXT.choosePattern];
         buttonList = [BTS.round, BTS.heart, BTS.star, BTS.hexagon, BTS.exit];
     },
     mode7: () => {
         modeStack.push(modeFlag);
         init();
-
-        // Color Words
-        ['chooseColorComb', 'yellow', 'pink', 'blue',
-            'cyan', 'purple', 'gray', 'castella'].forEach(e => textList[e].display = true);
-        colorTicketList.forEach(e => e.display = true)
+        textList = [TXT.chooseColorComb, TXT.yellow, TXT.pink, TXT.blue, TXT.cyan, TXT.purple, TXT.gray, TXT.castella];
         buttonList = [BTS.exit];
+        colorTicketList.forEach(e => e.display = true);
     },
     mode8: () => {
         modeStack.push(modeFlag);
         init();
-        textList['producerList'].display = true;
+        textList = [TXT.producerList];
         buttonList = [BTS.exit];
     },
     mode9: () => {
         modeStack.push(modeFlag);
         init();
-        textList['quitGame'].display = true;
+        textList = [TXT.quitGame];
         buttonList = [BTS.yes, BTS.no];
     },
 }
