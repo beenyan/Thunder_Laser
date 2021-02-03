@@ -14,17 +14,7 @@ class Button { // 按鈕類別
       ctx.save();
 
       ctx.font = this.font;
-      this.w = ctx.measureText(this.text).width;
-      this.h = parseInt(this.font.match(/\d+/));
-      this.t1x = this.x - this.w / 2 + 240 * scale;
-      this.t1y = this.y - this.h / 2 + 180 * scale;
-      this.t2x = this.x + this.w / 2 + 240 * scale;
-      this.t2y = this.y - this.h / 2 + 180 * scale
-      this.t3x = this.x + this.w / 2 + 240 * scale;
-      this.t3y = this.y + this.h * 0.3 + 180 * scale;
-      this.t4x = this.x - this.w / 2 + 240 * scale;
-      this.t4y = this.y + this.h * 0.3 + 180 * scale;
-
+      this.w = 0;
       // ctx.beginPath();
       // ctx.arc(this.t1x + 240 * scale, this.t1y + 180 * scale, 10, 0, Math.PI * 2);
       // ctx.stroke();
@@ -38,16 +28,32 @@ class Button { // 按鈕類別
 
       ctx.fillStyle = nowColor.darkColor;
       ctx.font = this.font;
-      ctx.fillText(this.text, this.t1x, this.t1y);
+      const deviation = {
+         x: 240 * scale,
+         y: 180 * scale
+      }
+      this.text.split('\n').forEach((text, index) => {
+         this.w = Math.max(this.w, ctx.measureText(text).width);
+         this.h = parseInt(this.font.match(/\d+/));
+         ctx.save();
+
+         ctx.fillStyle = nowColor.darkColor;
+         ctx.font = this.font;
+         ctx.fillText(text, this.x - this.w / 2 + deviation.x, this.y - this.h / 2 + (this.h * index) + deviation.y);
+
+         ctx.restore();
+      });
+      this.h = parseInt(this.font.match(/\d+/)) * this.text.split('\n').length;
+      this.left = this.x - this.w / 2 + deviation.x; // 左
+      this.right = this.x + this.w / 2 + deviation.x; // 右
+      this.top = this.y - this.h / 2 + deviation.y; // 上
+      this.bottom = this.y + this.h * 0.3 + deviation.y; // 下
 
       ctx.restore();
    }
    Touch(x = player.x, y = player.y) {
-      let topLineLeftRight = ((y - this.t1y) * (this.t1x - this.t2x) - (x - this.t1x) * (this.t1y - this.t2y) > 0 ? 1 : -1);
-      let rightLineLeftRight = ((y - this.t2y) * (this.t2x - this.t3x) - (x - this.t2x) * (this.t2y - this.t3y) > 0 ? 1 : -1);
-      let botLineLeftRight = (-(y - this.t3y) * (this.t3x - this.t4x) + (x - this.t3x) * (this.t3y - this.t4y) > 0 ? 1 : -1);
-      let leftLineLeftRight = (-(y - this.t4y) * (this.t4x - this.t1x) + (x - this.t4x) * (this.t4y - this.t1y) > 0 ? 1 : -1);
-      return topLineLeftRight * botLineLeftRight === -1 && rightLineLeftRight * leftLineLeftRight === -1; // 碰撞到 = true
+      // located 右 左 下 上
+      return x >= this.left && x <= this.right && y >= this.top && y <= this.bottom; // 碰撞到 = true
    }
    ColliDetect() { // 線性規劃檢查
       if (this.Touch()) { // 如果有碰撞就執行按鈕的指令

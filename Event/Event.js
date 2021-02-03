@@ -1,8 +1,19 @@
-canvas.addEventListener('mousemove', e => { // 滑鼠移動事件
+canvas.addEventListener('mousemove', e => { // 電腦移動事件
     player.x = player.x + (e.offsetX - player.originX); // 更動變化量
     player.y = player.y + (e.offsetY - player.originY); // 更動變化量
     player.originX = e.offsetX; // 設定此刻位置為下刻位置的origin參數
     player.originY = e.offsetY; // 設定此刻位置為下課位置的origin參數
+    player.move(); // 玩家修正及更改位置
+    buttonList.forEach(e => e.Mousemove()); // 檢查每一個button是否被碰到
+});
+
+canvas.addEventListener('touchmove', e => { // 手機移動事件
+    const offset = {
+        x: e.touches[0].clientX - canvas_offset.x,
+        y: e.touches[0].clientY - canvas_offset.y
+    }
+    player.x = player.originX = player.x + (offset.x - player.originX); // 更動變化量
+    player.y = player.originY = player.y + (offset.y - player.originY); // 更動變化量
     player.move(); // 玩家修正及更改位置
     buttonList.forEach(e => e.Mousemove()); // 檢查每一個button是否被碰到
 });
