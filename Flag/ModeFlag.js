@@ -69,7 +69,7 @@ let modeConfig = {
             font: 50 * scale + 'px Virgo',
             display: true
         });
-        if (textList['scoreCounter'].text.match(/\d+/) >= 100 && laserSpeed === 2.2) {
+        if (textList['scoreCounter'].text.match(/\d+/) >= 100 && laserSpeed >= 2) {
             textList['easterEgg'].display = true;
         };
         buttonList['menu'].display = true;
