@@ -6,7 +6,6 @@ function update() { // 更新數據
          Thunder_Laser_Music.pause();
          Thunder_Laser_Music.currentTime = 0;
          time = 0; // 時間重置
-         scoreCount = scoreCount + 1; // 時間單位加一
          laserList.push(new Laser({ // 新增雷射
             speed: laserSpeed * scale,
             length: laserLength * scale,

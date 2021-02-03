@@ -42,21 +42,20 @@ class Button { // 按鈕類別
 
       ctx.restore();
    }
-   ColliDetect(x = player.x, y = player.y) { // 線性規劃檢查
+   Touch(x = player.x, y = player.y) {
       let topLineLeftRight = ((y - this.t1y) * (this.t1x - this.t2x) - (x - this.t1x) * (this.t1y - this.t2y) > 0 ? 1 : -1);
       let rightLineLeftRight = ((y - this.t2y) * (this.t2x - this.t3x) - (x - this.t2x) * (this.t2y - this.t3y) > 0 ? 1 : -1);
       let botLineLeftRight = (-(y - this.t3y) * (this.t3x - this.t4x) + (x - this.t3x) * (this.t3y - this.t4y) > 0 ? 1 : -1);
       let leftLineLeftRight = (-(y - this.t4y) * (this.t4x - this.t1x) + (x - this.t4x) * (this.t4y - this.t1y) > 0 ? 1 : -1);
-      if (topLineLeftRight * botLineLeftRight === -1 && rightLineLeftRight * leftLineLeftRight === -1) { // 如果有碰撞就執行按鈕的指令
+      return topLineLeftRight * botLineLeftRight === -1 && rightLineLeftRight * leftLineLeftRight === -1; // 碰撞到 = true
+   }
+   ColliDetect() { // 線性規劃檢查
+      if (this.Touch()) { // 如果有碰撞就執行按鈕的指令
          this.font = `${this.fontSize}px Virgo`;
          this.instruction();
       }
    }
-   Mousemove(x = player.x, y = player.y) {
-      let topLineLeftRight = ((y - this.t1y) * (this.t1x - this.t2x) - (x - this.t1x) * (this.t1y - this.t2y) > 0 ? 1 : -1);
-      let rightLineLeftRight = ((y - this.t2y) * (this.t2x - this.t3x) - (x - this.t2x) * (this.t2y - this.t3y) > 0 ? 1 : -1);
-      let botLineLeftRight = (-(y - this.t3y) * (this.t3x - this.t4x) + (x - this.t3x) * (this.t3y - this.t4y) > 0 ? 1 : -1);
-      let leftLineLeftRight = (-(y - this.t4y) * (this.t4x - this.t1x) + (x - this.t4x) * (this.t4y - this.t1y) > 0 ? 1 : -1);
-      this.font = `${this.fontSize * (topLineLeftRight * botLineLeftRight === -1 && rightLineLeftRight * leftLineLeftRight === -1 ? 1.2 : 1)}px Virgo`;// 如果有碰撞就執行字體放大
+   Mousemove() {
+      this.font = `${this.fontSize * (this.Touch() ? 1.2 : 1)}px Virgo`;// 如果有碰撞就執行字體放大
    }
 }

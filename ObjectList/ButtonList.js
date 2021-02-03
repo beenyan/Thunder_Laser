@@ -1,6 +1,6 @@
 let buttonList = [];
 let BTS = {
-    play: new Button({
+    play: new Button({ // 開始遊玩
         text: 'PLAY',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -10,7 +10,7 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    appearanceSetting: new Button({
+    appearanceSetting: new Button({ // 設置皮膚
         text: 'APPEARANCE SETTING',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -20,7 +20,7 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    producerList: new Button({
+    producerList: new Button({ // 製作人員清單
         text: 'PRODUCER LIST',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -30,7 +30,7 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    easy: new Button({
+    easy: new Button({ // 簡單模式
         text: 'EASY',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -42,7 +42,7 @@ let BTS = {
             laserFrequence = 200;
         }
     }),
-    normal: new Button({
+    normal: new Button({ // 普通模式
         text: 'NORMAL',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -54,7 +54,7 @@ let BTS = {
             laserFrequence = 190;
         }
     }),
-    difficult: new Button({
+    difficult: new Button({ // 困難模式
         text: 'DIFFICULT',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -66,7 +66,7 @@ let BTS = {
             laserFrequence = 175;
         }
     }),
-    colorSetting: new Button({
+    colorSetting: new Button({ // 顏色選擇
         text: 'COLOR SETTING',
         fontSize: 30 * scale,
         x: 0 * scale,
@@ -76,7 +76,7 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    patternSetting: new Button({
+    patternSetting: new Button({ // 皮膚選擇
         text: 'PATTERN SETTING',
         fontSize: 30 * scale,
         x: 0 * scale,
@@ -86,7 +86,7 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    round: new Button({
+    round: new Button({ // 圓形
         text: 'ROUND',
         fontSize: 21 * scale,
         x: -80 * scale,
@@ -96,7 +96,7 @@ let BTS = {
             localStorage.setItem('patternFlag', patternFlag);
         }
     }),
-    heart: new Button({
+    heart: new Button({ // 心形
         text: 'HEART',
         fontSize: 21 * scale,
         x: -80 * scale,
@@ -106,7 +106,7 @@ let BTS = {
             localStorage.setItem('patternFlag', patternFlag);
         }
     }),
-    star: new Button({
+    star: new Button({ // 星形
         text: 'STAR',
         fontSize: 21 * scale,
         x: 80 * scale,
@@ -116,7 +116,7 @@ let BTS = {
             localStorage.setItem('patternFlag', patternFlag);
         }
     }),
-    hexagon: new Button({
+    hexagon: new Button({ // 六角形
         text: 'HEXAGON',
         fontSize: 21 * scale,
         x: 80 * scale,
@@ -126,7 +126,7 @@ let BTS = {
             localStorage.setItem('patternFlag', patternFlag);
         }
     }),
-    menu: new Button({
+    menu: new Button({ // 主畫面
         text: 'MENU',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -140,7 +140,7 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    again: new Button({
+    again: new Button({ // 再次遊玩
         text: 'AGAIN',
         fontSize: 21 * scale,
         x: 0 * scale,
@@ -154,7 +154,7 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    yes: new Button({
+    yes: new Button({ // 確認離開
         text: 'YES',
         fontSize: 21 * scale,
         x: -50 * scale,
@@ -162,7 +162,7 @@ let BTS = {
         key: 'Escape',
         instruction: () => close()
     }),
-    no: new Button({
+    no: new Button({ // 取消離還
         text: 'NO',
         fontSize: 21 * scale,
         x: 50 * scale,
@@ -172,7 +172,7 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    exit: new Button({
+    exit: new Button({ // 返回上個畫面
         text: 'EXIT',
         fontSize: 21 * scale,
         x: 207 * scale,
