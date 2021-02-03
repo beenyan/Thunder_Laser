@@ -36,7 +36,7 @@ class Player { // 玩家標點物件
         ctx.stroke();
         ctx.closePath();
 
-        drawPattern(this);
+        drawPattern();
 
         ctx.restore();
     }
