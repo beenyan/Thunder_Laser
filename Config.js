@@ -14,7 +14,8 @@ let modeStack = ['mode9'] // 模式旗標堆疊
 let time = 0; // 時間紀錄器
 let scoreCount = 0; // 分數紀錄器
 let nowColor = colorConfig[localStorage.getItem('colorFlag') ? localStorage.getItem('colorFlag') : 'blue']; // 顏色紀錄器
-
+let touched = false; // 檢查是否觸控螢幕遊玩
+    
 // 聲音
 let BGM = new Audio('Audio/BGM.ogg'); // 背景音樂
 BGM.loop = true;
