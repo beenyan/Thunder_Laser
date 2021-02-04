@@ -8,10 +8,7 @@ const ww = 480 * scale; // 設定著色區寬度
 const wh = 360 * scale; // 設定著色區高度
 canvas.width = ww; // 設定畫布寬度
 canvas.height = wh; // 設定畫布高度
-const canvas_offset = {
-    x: canvas.getBoundingClientRect().x,
-    y: canvas.getBoundingClientRect().y
-}
+const canvas_offset = canvas.getBoundingClientRect();
 
 ctx.fillRect(0, 0, ww, wh); // 設定繪圖區域
 
