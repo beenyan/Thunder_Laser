@@ -3,7 +3,7 @@ let modeConfig = {
         modeStack.push(modeFlag);
         init();
         textList = [TXT.TLTitle];
-        buttonList = [BTS.play, BTS.appearanceSetting, BTS.producerList, BTS.exit];
+        buttonList = [BTS.play, BTS.Setting, BTS.producerList, BTS.exit];
     },
     mode2: () => { // mode2 = 進入玩選單
         modeStack.push(modeFlag);

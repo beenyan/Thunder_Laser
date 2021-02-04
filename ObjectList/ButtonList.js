@@ -10,8 +10,8 @@ let BTS = {
             modeConfig[modeFlag]();
         }
     }),
-    appearanceSetting: new Button({ // 設置皮膚
-        text: 'APPEARANCE SETTING',
+    Setting: new Button({ // 設定
+        text: 'SETTING',
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 50 * scale,
