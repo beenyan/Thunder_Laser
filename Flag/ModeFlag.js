@@ -11,7 +11,7 @@ let modeConfig = {
         textList = [TXT.howToPlay, TXT.chooseMod];
         buttonList = [BTS.easy, BTS.normal, BTS.hard, BTS.exit];
     },
-    mode3() { // mode3 = 進入外觀設定
+    mode3() { // mode3 = 進入設定
         modeStack.push(modeFlag);
         init();
         textList = [];

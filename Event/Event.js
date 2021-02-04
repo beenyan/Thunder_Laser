@@ -23,7 +23,7 @@ window.addEventListener('click', () => { // 滑鼠點擊事件
     colorTicketList.filter(e => e.display).forEach(e => e.ColliDetect()); // 檢查color的碰撞
 });
 
-window.addEventListener('keydown', (keydown) => {
+window.addEventListener('keydown', keydown => {
     if (keydown.repeat) return;　// 不執行持續壓的按鍵
     switch (keydown.code) {
         case 'Escape': // Esc
