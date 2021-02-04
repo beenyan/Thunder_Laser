@@ -76,13 +76,41 @@ let TXT = {
         x: 70 * scale,
         y: -162.5 * scale,
         text: 'SCORE：0',
-        fontSize: 15 * scale
+        fontSize: 15 * scale,
+        show() {
+            Object.assign(this, {
+                x: 0 * scale,
+                y: -15 * scale,
+                font: 40 * scale + 'px Virgo'
+            })
+        },
+        unshow() {
+            Object.assign(this, {
+                x: 70 * scale,
+                y: -162.5 * scale,
+                font: 15 * scale + 'px Virgo',
+            })
+        }
     }),
     MVP: new Text({
         x: -70 * scale,
         y: -162.5 * scale,
-        text: `MVP：${localStorage.getItem('score') ? localStorage.getItem('score') : 0}`,
-        fontSize: 15 * scale
+        text: 'MVP：0',
+        fontSize: 15 * scale,
+        show() {
+            Object.assign(this, {
+                x: 0 * scale,
+                y: -70 * scale,
+                font: 50 * scale + 'px Virgo'
+            })
+        },
+        unshow() {
+            Object.assign(this, {
+                x: -70 * scale,
+                y: -162.5 * scale,
+                font: 15 * scale + 'px Virgo',
+            })
+        }
     }),
     easterEgg: new Text({
         x: 0 * scale,
@@ -101,5 +129,11 @@ let TXT = {
         y: -150 * scale,
         text: 'Author：Human\n1：1\n2：2\n3：3\n4：4\n5：5\n6：6\n7：7\n8：8\n9：9\nAudio：魔王魂',
         fontSize: 30 * scale
+    }),
+    difficulty: new Text({
+        x: 0 * scale,
+        y: 166 * scale,
+        text: 'difficulty：',
+        fontSize: 15 * scale
     }),
 }

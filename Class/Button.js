@@ -5,7 +5,7 @@ class Button { // 按鈕類別
          y: 0, // Y位置
          font: `${args.fontSize}px Virgo`, // 設定字元大小及字體
          text: '', // 輸入文字內容
-         instruction: () => { }, // 按鈕對應的指令
+         instruction() { }, // 按鈕對應的指令
       }
       Object.assign(def, args);
       Object.assign(this, def);

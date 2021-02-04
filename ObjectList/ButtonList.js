@@ -5,17 +5,17 @@ let BTS = {
         fontSize: 21 * scale,
         x: 0 * scale,
         y: -10 * scale,
-        instruction: () => {
+        instruction() {
             modeFlag = 'mode2';
             modeConfig[modeFlag]();
         }
     }),
-    Setting: new Button({ // 設定
+    setting: new Button({ // 設定
         text: 'SETTING',
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 50 * scale,
-        instruction: () => {
+        instruction() {
             modeFlag = 'mode3';
             modeConfig[modeFlag]();
         }
@@ -25,7 +25,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 110 * scale,
-        instruction: () => {
+        instruction() {
             modeFlag = 'mode8';
             modeConfig[modeFlag]();
         }
@@ -35,7 +35,8 @@ let BTS = {
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 10 * scale,
-        instruction: () => {
+        instruction() {
+            difficulty = 'easy';
             modeFlag = 'mode4';
             modeConfig[modeFlag]();
             laserSpeed = 1.6;
@@ -47,19 +48,21 @@ let BTS = {
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 60 * scale,
-        instruction: () => {
+        instruction() {
+            difficulty = 'normal';
             modeFlag = 'mode4';
             modeConfig[modeFlag]();
             laserSpeed = 1.8;
             laserFrequence = 190;
         }
     }),
-    difficult: new Button({ // 困難模式
-        text: 'DIFFICULT',
+    hard: new Button({ // 困難模式
+        text: 'Hard',
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 110 * scale,
-        instruction: () => {
+        instruction() {
+            difficulty = 'hard';
             modeFlag = 'mode4';
             modeConfig[modeFlag]();
             laserSpeed = 2;
@@ -71,7 +74,7 @@ let BTS = {
         fontSize: 30 * scale,
         x: 0 * scale,
         y: -20 * scale,
-        instruction: () => {
+        instruction() {
             modeFlag = 'mode7';
             modeConfig[modeFlag]();
         }
@@ -81,7 +84,7 @@ let BTS = {
         fontSize: 30 * scale,
         x: 0 * scale,
         y: 50 * scale,
-        instruction: () => {
+        instruction() {
             modeFlag = 'mode6';
             modeConfig[modeFlag]();
         }
@@ -91,7 +94,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: -80 * scale,
         y: 35 * scale,
-        instruction: () => {
+        instruction() {
             patternFlag = 'round';
             localStorage.setItem('patternFlag', patternFlag);
         }
@@ -101,7 +104,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: -80 * scale,
         y: 95 * scale,
-        instruction: () => {
+        instruction() {
             patternFlag = 'heart';
             localStorage.setItem('patternFlag', patternFlag);
         }
@@ -111,7 +114,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: 80 * scale,
         y: 35 * scale,
-        instruction: () => {
+        instruction() {
             patternFlag = 'star';
             localStorage.setItem('patternFlag', patternFlag);
         }
@@ -121,7 +124,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: 80 * scale,
         y: 95 * scale,
-        instruction: () => {
+        instruction() {
             patternFlag = 'hexagon';
             localStorage.setItem('patternFlag', patternFlag);
         }
@@ -131,7 +134,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 105 * scale,
-        instruction: () => {
+        instruction() {
             Lose.pause();
             Lose.currentTime = BGM.currentTime = 0;
             BGM.play();
@@ -145,7 +148,7 @@ let BTS = {
         fontSize: 21 * scale,
         x: 0 * scale,
         y: 55 * scale,
-        instruction: () => {
+        instruction() {
             Lose.pause();
             Lose.currentTime = BGM.currentTime = 0;
             BGM.play();
@@ -160,14 +163,14 @@ let BTS = {
         x: -50 * scale,
         y: 55 * scale,
         key: 'Escape',
-        instruction: () => close()
+        instruction() { close() }
     }),
     no: new Button({ // 取消離還
         text: 'NO',
         fontSize: 21 * scale,
         x: 50 * scale,
         y: 55 * scale,
-        instruction: () => {
+        instruction() {
             modeFlag = 'mode1';
             modeConfig[modeFlag]();
         }
@@ -178,7 +181,7 @@ let BTS = {
         x: 207 * scale,
         y: 167 * scale,
         key: 'Escape',
-        instruction: () => {
+        instruction() {
             modeFlag = modeStack[modeStack.length - 2];
             modeStack.splice(modeStack.length - 2, 2);
             modeConfig[modeFlag]();

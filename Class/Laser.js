@@ -82,12 +82,12 @@ class Laser { // 雷射類別
       if (collision === true) { // 如果碰撞到就初始化並且更改旗標
          BGM.pause();
          Lose.play();
-         if (!localStorage.getItem('score') || localStorage.getItem('score') < scoreCount)
-            localStorage.setItem('score', scoreCount);
+         if (!localStorage.getItem(difficulty) || localStorage.getItem(difficulty) < scoreCount)
+            localStorage.setItem(difficulty, scoreCount);
          init();
          modeFlag = 'mode5';
          modeConfig[modeFlag]();
-         TXT.MVP.text = `MVP：${localStorage.getItem('score')}`;
+         TXT.MVP.text = `MVP：${localStorage.getItem(difficulty)}`;
       }
    }
    outscreen() { // 超出螢幕
