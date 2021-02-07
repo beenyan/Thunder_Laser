@@ -5,7 +5,5 @@ function init() { // 初始化
    laserList = []; // 清空雷射陣列
    player.limitMode = 'outside'; // 玩家移動模式改為外框
    insideBorder.display = false; // 隱藏內框
-   for (const [key] of Object.entries(textList))
-      textList[key].display = false; // 隱藏所有文字
    colorTicketList.forEach(e => e.display = false); // 隱藏所有色票
 }

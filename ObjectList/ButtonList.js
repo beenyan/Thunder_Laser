@@ -138,7 +138,7 @@ let BTS = {
             Lose.pause();
             Lose.currentTime = BGM.currentTime = 0;
             BGM.play();
-            modeFlag = modeStack.last(4);
+            modeFlag = modeStack.last(3);
             modeConfig[modeFlag]();
         }
     }),
@@ -151,7 +151,7 @@ let BTS = {
             Lose.pause();
             Lose.currentTime = BGM.currentTime = 0;
             BGM.play();
-            modeFlag = modeStack.last(2);
+            modeFlag = modeStack.last();
             modeConfig[modeFlag]();
         }
     }),
@@ -180,7 +180,7 @@ let BTS = {
         y: 167 * scale,
         key: 'Escape',
         instruction() {
-            modeFlag = modeStack.last(2);
+            modeFlag = modeStack.last();
             modeConfig[modeFlag]();
         }
     }),

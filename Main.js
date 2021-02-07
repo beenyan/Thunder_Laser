@@ -16,7 +16,8 @@ let player = new Player({ // 創建玩家
    limitMode: 'outside'
 });
 
-onload = () => {
+window.onload = () => {
+   BGM.play();
    canvas.style.opacity = 1;
    modeConfig[modeFlag](); // 初始化
    requestAnimationFrame(draw); // 重繪畫布
