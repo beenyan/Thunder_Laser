@@ -27,4 +27,8 @@ let colorConfig = {
       darkColor: '#9D783A',
       lightColor: '#DBB866'
    },
+   blackWhite:{ //黑白
+      darkColor: '#000000',
+      lightColor: '#FFFFFF'
+   }
 }

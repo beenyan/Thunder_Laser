@@ -13,13 +13,11 @@ let insideBorder = new Border({ // 創建邊界
 
 let player = new Player({ // 創建玩家
    r: playerR * scale,
-   limitMode: 'outside'
 });
 
-window.onload = () => {
-   BGM.play();
-   canvas.style.opacity = 1;
+window.addEventListener('load', () => {
+   canvas.style.opacity = 1; //不透明度為100%
    modeConfig[modeFlag](); // 初始化
    requestAnimationFrame(draw); // 重繪畫布
    setInterval(update, 0); // 更新物件數據
-}
+})

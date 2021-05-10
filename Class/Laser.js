@@ -20,6 +20,9 @@ class Laser { // 雷射類別
       this.deg = Math.atan2(player.y - this.t1y, player.x - this.t1x); // 透過斜率取得朝向角度
       this.vx = Math.cos(this.deg); // 設定單位向量
       this.vy = Math.sin(this.deg); // 設定單位向量
+      shootSoundEffect.pause(); //聲音暫停
+      shootSoundEffect.currentTime = 0; //重製聲音
+      shootSoundEffect.play(); //播放聲音
    }
    draw() { // 繪圖動作
       ctx.save();
@@ -65,7 +68,7 @@ class Laser { // 雷射類別
       this.t2x = this.t1x + Math.cos(this.deg) * this.length; // 更新t2點
       this.t2y = this.t1y + Math.sin(this.deg) * this.length; // 更新t2點
    }
-   ColliDetect(x, y, r) { // 碰撞檢測
+   colliDetect(x, y, r) { // 碰撞檢測
       let t1LeftRight = ((y - this.t1y) * (this.t1y - this.t2y) - (x - this.t1x) * (this.t2x - this.t1x) > 0 ? 1 : -1); // 偵測t1左右
       let t2LeftRight = ((y - this.t2y) * (this.t1y - this.t2y) - (x - this.t2x) * (this.t2x - this.t1x) > 0 ? 1 : -1); // 偵測t2左右
       let lineBetween = t1LeftRight * t2LeftRight === -1; // 偵測是否在t1t2之間
@@ -80,22 +83,14 @@ class Laser { // 雷射類別
          }
       }
       if (collision === true) { // 如果碰撞到就初始化並且更改旗標
-         BGM.pause();
-         Lose.play();
-         if (!localStorage.getItem(difficulty) || localStorage.getItem(difficulty) < scoreCount)
-            localStorage.setItem(difficulty, scoreCount);
-         init();
          modeFlag = 'mode5';
          modeConfig[modeFlag]();
-         TXT.MVP.text = `MVP：${localStorage.getItem(difficulty)}`;
       }
    }
    outscreen() { // 超出螢幕
       // 左 上 右 下
       if (this.t1x < -this.length && this.t2x < -this.length || this.t1y < -this.length && this.t2y < -this.length || this.t1x > ww + this.length && this.t2x > ww + this.length || this.t1y > wh + this.length && this.t2y > wh + this.length) {
-         scoreCount += 1;
          return false;
-      }
-      else return true;
+      } else return true;
    }
 }

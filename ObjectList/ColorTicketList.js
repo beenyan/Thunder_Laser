@@ -1,6 +1,4 @@
-let colorTicketList = []; // 色票陣列
-
-colorTicketList.push(
+let colorTicketList = [
     yellowTicket = new ColorTicket({
         x: 100 * scale,
         y: 193 * scale,
@@ -32,8 +30,13 @@ colorTicketList.push(
         colorFlag: 'gray',
     }),
     castellaTicket = new ColorTicket({
-        x: 240 * scale,
+        x: 100 * scale,
         y: 313 * scale,
         colorFlag: 'castella',
     }),
-);
+    blackWhite = new ColorTicket({
+        x: 240 * scale,
+        y: 313 * scale,
+        colorFlag: 'blackWhite',
+    }),
+]; // 色票陣列

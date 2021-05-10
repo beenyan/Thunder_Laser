@@ -1,139 +1,134 @@
-let textList = [];
-let TXT = {
-    TLTitle: new Text({
-        x: 0 * scale,
-        y: -90 * scale,
-        text: 'THUNDER LASER',
-        fontSize: 35 * scale
-    }),
-    howToPlay: new Text({
-        x: 0 * scale,
-        y: -170 * scale,
-        text: 'HOW TO PLAY：MOVE YOUR MOUSE AND TRY TO AVOID ALL SHOTS',
-        fontSize: 10 * scale
-    }),
-    chooseMod: new Text({
-        x: 0 * scale,
-        y: -70 * scale,
-        text: 'CHOOSE THE MODE YOU WANT',
-        fontSize: 25 * scale
-    }),
-    choosePattern: new Text({
-        x: 0 * scale,
-        y: -85 * scale,
-        text: 'CHOOSE THE PATTERN\nYOU WANT',
-        fontSize: 30 * scale
-    }),
-    chooseColorComb: new Text({
-        x: 0 * scale,
-        y: -105 * scale,
-        text: 'CHOOSE THE COLOR\nCOMBINATION YOU WANT',
-        fontSize: 30 * scale
-    }),
-    yellow: new Text({
-        x: -140 * scale,
-        y: -15 * scale,
-        text: 'YELLOW',
-        fontSize: 21 * scale
-    }),
-    pink: new Text({
-        x: 0 * scale,
-        y: -15 * scale,
-        text: 'PINK',
-        fontSize: 21 * scale
-    }),
-    blue: new Text({
-        x: 140 * scale,
-        y: -15 * scale,
-        text: 'BLUE',
-        fontSize: 21 * scale
-    }),
-    cyan: new Text({
-        x: -140 * scale,
-        y: 45 * scale,
-        text: 'CYAN',
-        fontSize: 21 * scale
-    }),
-    purple: new Text({
-        x: 0 * scale,
-        y: 45 * scale,
-        text: 'PURPLE',
-        fontSize: 21 * scale
-    }),
-    gray: new Text({
-        x: 140 * scale,
-        y: 45 * scale,
-        text: 'GRAY',
-        fontSize: 21 * scale
-    }),
-    castella: new Text({
-        x: 0 * scale,
-        y: 105 * scale,
-        text: 'CASTELLA',
-        fontSize: 21 * scale
-    }),
-    scoreCounter: new Text({
-        x: 70 * scale,
-        y: -162.5 * scale,
-        text: 'SCORE：0',
-        fontSize: 15 * scale,
-        show() {
-            Object.assign(this, {
-                x: 0 * scale,
-                y: -15 * scale,
-                font: 40 * scale + 'px Virgo'
-            })
-        },
-        unshow() {
-            Object.assign(this, {
-                x: 70 * scale,
-                y: -162.5 * scale,
-                font: 15 * scale + 'px Virgo',
-            })
-        }
-    }),
-    MVP: new Text({
-        x: -70 * scale,
-        y: -162.5 * scale,
-        text: 'MVP：0',
-        fontSize: 15 * scale,
-        show() {
-            Object.assign(this, {
-                x: 0 * scale,
-                y: -70 * scale,
-                font: 50 * scale + 'px Virgo'
-            })
-        },
-        unshow() {
-            Object.assign(this, {
-                x: -70 * scale,
-                y: -162.5 * scale,
-                font: 15 * scale + 'px Virgo',
-            })
-        }
-    }),
-    easterEgg: new Text({
-        x: 0 * scale,
-        y: -170 * scale,
-        text: 'ji3vu3cj0 su3 xji6m/3vm0 我喜歡你 羅詠萱',
-        fontSize: 10 * scale
-    }),
-    quitGame: new Text({
-        x: 0 * scale,
-        y: -10 * scale,
-        text: 'ARE YOU SURE TO\nQUIT THE GAME',
-        fontSize: 30 * scale
-    }),
-    producerList: new Text({
-        x: 0 * scale,
-        y: -150 * scale,
-        text: 'Author：Human\n1：1\n2：2\n3：3\n4：4\n5：5\n6：6\n7：7\n8：8\n9：9\nAudio：魔王魂',
-        fontSize: 30 * scale
-    }),
-    difficulty: new Text({
-        x: 0 * scale,
-        y: 166 * scale,
-        text: 'difficulty：',
-        fontSize: 15 * scale
-    }),
-}
+let TLTitle = new Text({
+    x: 0 * scale,
+    y: -90 * scale,
+    text: 'THUNDER LASER',
+    fontSize: 35 * scale
+});
+let yellow = new Text({
+    x: -140 * scale,
+    y: -15 * scale,
+    text: 'YELLOW',
+    fontSize: 21 * scale
+});
+let pink = new Text({
+    x: 0 * scale,
+    y: -15 * scale,
+    text: 'PINK',
+    fontSize: 21 * scale
+});
+let blue = new Text({
+    x: 140 * scale,
+    y: -15 * scale,
+    text: 'BLUE',
+    fontSize: 21 * scale
+});
+let cyan = new Text({
+    x: -140 * scale,
+    y: 45 * scale,
+    text: 'CYAN',
+    fontSize: 21 * scale
+});
+let purple = new Text({
+    x: 0 * scale,
+    y: 45 * scale,
+    text: 'PURPLE',
+    fontSize: 21 * scale
+});
+let gray = new Text({
+    x: 140 * scale,
+    y: 45 * scale,
+    text: 'GRAY',
+    fontSize: 21 * scale
+});
+let castella = new Text({
+    x: -140 * scale,
+    y: 105 * scale,
+    text: 'CASTELLA',
+    fontSize: 21 * scale
+});
+let blackWhite = new Text({
+    x: 0 * scale,
+    y: 105 * scale,
+    text:"ZEBRA",
+    fontSize: 21 * scale
+});
+let howToPlay = new Text({
+    x: 0 * scale,
+    y: -170 * scale,
+    text: 'HOW TO PLAY：MOVE YOUR MOUSE AND TRY TO AVOID ALL SHOTS',
+    fontSize: 10 * scale
+});
+let chooseMod = new Text({
+    x: 0 * scale,
+    y: -70 * scale,
+    text: 'CHOOSE THE MODE YOU WANT',
+    fontSize: 25 * scale
+});
+let chooseColorComb = new Text({
+    x: 0 * scale,
+    y: -105 * scale,
+    text: 'CHOOSE THE COLOR\nCOMBINATION YOU WANT',
+    fontSize: 30 * scale
+});
+let gamingScoreCounter = new Text({
+    x: 70 * scale,
+    y: -162.5 * scale,
+    text: 'SCORE：0',
+    fontSize: 15 * scale,
+});
+let gamingMvp = new Text({
+    x: -70 * scale,
+    y: -162.5 * scale,
+    text: 'MVP：0',
+    fontSize: 15 * scale,
+});
+let gamingDifficulty = new Text({
+    x: 0 * scale,
+    y: 166 * scale,
+    text: 'difficulty：',
+    fontSize: 15 * scale
+});
+let producerList = new Text({
+    x: 0 * scale,
+    y: -120 * scale,
+    text: 'CODE\n\nBEENYAN\nJTT.YANG\n\nART\n\nY.DOOOG\nJTT.YANG',
+    fontSize: 30 * scale
+});
+let quitGame = new Text({
+    x: 0 * scale,
+    y: -10 * scale,
+    text: 'ARE YOU SURE TO\nQUIT THE GAME',
+    fontSize: 30 * scale
+});
+let choosePattern = new Text({
+    x: 0 * scale,
+    y: -85 * scale,
+    text: 'CHOOSE THE PATTERN\nYOU WANT',
+    fontSize: 30 * scale
+});
+let menuOrAgainScoreCounter = new Text({
+    x: 0 * scale,
+    y: -15 * scale,
+    text: 'SCORE：0',
+    fontSize: 40 * scale,
+});
+let menuOrAgainMvp = new Text({
+    x: 0 * scale,
+    y: -70 * scale,
+    text: 'MVP：0',
+    fontSize: 50 * scale,
+});
+let easterEgg = new Text({
+    x: 0 * scale,
+    y: -170 * scale,
+    text: 'ji3vu3cj0 su3 xji6m/3vm0',
+    fontSize: 10 * scale
+});
+let homeTextList = [TLTitle];
+let chooseModeTextList = [howToPlay, chooseMod];
+let chooseColorTextList = [chooseColorComb,yellow, pink, blue, cyan, purple, gray, castella,blackWhite];
+let gamingTextList = [gamingScoreCounter, gamingMvp, gamingDifficulty];
+let producerListTextList = [producerList];
+let quitGameTextList = [quitGame];
+let choosePatternTextList = [choosePattern]
+let menuOrAgainTextList = [menuOrAgainScoreCounter, menuOrAgainMvp]

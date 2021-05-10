@@ -18,7 +18,7 @@ class Text { // 文字類別
 
          ctx.fillStyle = nowColor.darkColor;
          ctx.font = this.font;
-         ctx.fillText(text, this.x - this.w / 2 + 240 * scale, this.y - this.h / 2 + this.h * index + 180 * scale);
+         ctx.fillText(text, this.x - this.w / 2 + deviation.x, this.y - this.h / 2 + this.h * index + deviation.y);
 
          ctx.restore();
       });

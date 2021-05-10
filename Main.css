@@ -3,7 +3,7 @@
     src: url(virgo.ttf);
 }
 
-body, html {
+body {
     margin: 0;
     width: 100vw;
     height: 100vh;

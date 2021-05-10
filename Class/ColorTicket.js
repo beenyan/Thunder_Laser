@@ -28,17 +28,16 @@ class ColorTicket { // 色票類別
 
         ctx.restore();
     }
-    Touch() {
+    touch() { //檢查碰撞
         return Math.sqrt(Math.pow(player.x - this.x, 2) + Math.pow(player.y - this.y, 2)) < this.r;
     }
-    Mousemove() {
-        // 碰到放大
-        this.scale = this.Touch() ? 1.6 : 1;
-    }
-    ColliDetect() { // 線性規劃檢查
-        if (this.Touch()) { // 如果碰撞到就更新顏色
+    colliDetect() { // 碰撞檢查
+        if (this.touch()) { // 如果碰撞到就更新顏色
             nowColor = colorConfig[this.colorFlag];
             localStorage.setItem('colorFlag', this.colorFlag);
         }
+    }
+    mouseHoverDetect() { //當游標放在按鈕上...
+        this.scale = this.touch() ? 1.2 : 1; // 碰到放大
     }
 }
